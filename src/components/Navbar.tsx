@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { Equal, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Navbar() {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
@@ -24,9 +25,9 @@ export function Navbar() {
           </p>
         </div>
         <div className="hidden lg:flex flex-row gap-12 whitespace-nowrap">
-          <p>Jak to działa?</p>
-          <p>Jak ci pomożemy?</p>
-          <p>Regulamin</p>
+          <Link href="#how-it-works">Jak to działa?</Link>
+          <Link href="#details">Jak ci pomożemy?</Link>
+          <Link href="#terms-of-use">Regulamin</Link>
         </div>
         <Link href="https://solvro.pwr.edu.pl/" className="ml-auto" passHref>
           <Image
@@ -38,13 +39,15 @@ export function Navbar() {
           />
         </Link>
         {/* Mobile icon */}
-        <button
+        <Button
+          size="icon"
+          variant="transparent"
           title="Otwórz menu"
           onClick={() => setShowSidebar(true)}
-          className="flex lg:hidden"
+          className="lg:hidden"
         >
           <Equal size={36} />
-        </button>
+        </Button>
       </div>
       {showSidebar && (
         <div className="absolute flex lg:hidden bg-[#040314E5] p-6 top-0 right-0 max-w-sm flex-col gap-12 items-right justify-start w-full h-full">
@@ -58,14 +61,19 @@ export function Navbar() {
                 height={150}
               />
             </Link>
-            <button title="Zamknij menu" onClick={() => setShowSidebar(false)}>
+            <Button
+              size="icon"
+              variant="transparent"
+              title="Zamknij menu"
+              onClick={() => setShowSidebar(false)}
+            >
               <X size={36} />
-            </button>
+            </Button>
           </div>
           <div className="flex flex-col w-full text-right gap-6 text-xl">
-            <p>Jak to działa?</p>
-            <p>Jak ci pomożemy?</p>
-            <p>Regulamin</p>
+            <Link href="#how-it-works">Jak to działa?</Link>
+            <Link href="#details">Jak ci pomożemy?</Link>
+            <Link href="#terms-of-use">Regulamin</Link>
           </div>
         </div>
       )}
