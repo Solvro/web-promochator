@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import PromochatorLogo from "/assets/logo/promochator_logo.png";
 
 import { useState } from "react";
 import Link from "next/link";
