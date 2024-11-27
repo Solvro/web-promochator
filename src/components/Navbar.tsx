@@ -27,7 +27,7 @@ export function Navbar() {
         <div className="hidden lg:flex flex-row gap-12 whitespace-nowrap">
           <Link href="#how-it-works">Jak to działa?</Link>
           <Link href="#details">Jak ci pomożemy?</Link>
-          <Link href="#terms-of-use">Regulamin</Link>
+          <Link href="/terms-of-use">Regulamin</Link>
         </div>
         <Link href="https://solvro.pwr.edu.pl/" className="ml-auto" passHref>
           <Image
@@ -73,7 +73,7 @@ export function Navbar() {
           <div className="flex flex-col w-full text-right gap-6 text-xl">
             <Link href="#how-it-works">Jak to działa?</Link>
             <Link href="#details">Jak ci pomożemy?</Link>
-            <Link href="#terms-of-use">Regulamin</Link>
+            <Link href="/terms-of-use">Regulamin</Link>
           </div>
         </div>
       )}
