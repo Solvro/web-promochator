@@ -39,15 +39,17 @@ export function Navbar() {
           />
         </Link>
         {/* Mobile icon */}
-        <Button
-          size="icon"
-          variant="transparent"
-          title="Otwórz menu"
-          onClick={() => setShowSidebar(true)}
-          className="lg:hidden"
-        >
-          <Equal size={36} />
-        </Button>
+        {!showSidebar && (
+          <Button
+            size="icon"
+            variant="transparent"
+            title="Otwórz menu"
+            onClick={() => setShowSidebar(true)}
+            className="lg:hidden"
+          >
+            <Equal size={36} />
+          </Button>
+        )}
       </div>
       {showSidebar && (
         <div className="absolute flex lg:hidden bg-[#040314E5] p-6 top-0 right-0 max-w-sm flex-col gap-12 items-right justify-start w-full h-full">
