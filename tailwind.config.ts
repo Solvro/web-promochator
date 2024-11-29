@@ -11,9 +11,15 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'],  
+        sans: ['Poppins', 'sans-serif'],
       },
       colors: {
+        colorWhite: '#E7EAFB',
+        colorPrimary: '#5F7ECD',
+        colorSecondary: '#010840',
+        backgroundChatBot: '#1D2150',
+        backgroundChatUser: '#34386A',
+        textSecondary: '#E6E7FF',
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

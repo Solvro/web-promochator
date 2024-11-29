@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import SolvroLogo from "../../../public/assets/logo/solvro-dark.png";
-import PromochatorLogo from "../../../public/assets/logo/promochator_logo.png";
+import SolvroLogo from "../../public/assets/logo/solvro-dark.png";
+import PromochatorLogo from "../../public/assets/logo/promochator_logo.png";
 
 import { useState } from "react";
 
