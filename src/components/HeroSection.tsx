@@ -3,7 +3,7 @@
 
 import ChatBot from "../../public/chat-bot.png";
 import { ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/button"
+import { Button } from "@/components/ui/button"
 import Image from "next/image";
 import Link from 'next/link';
 
