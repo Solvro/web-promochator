@@ -17,6 +17,7 @@ export default {
         colorWhite: '#E7EAFB',
         colorPrimary: '#5F7ECD',
         colorSecondary: '#010840',
+        colorMuted: '#989AAE',
         backgroundChatBot: '#1D2150',
         backgroundChatUser: '#34386A',
         textSecondary: '#E6E7FF',
