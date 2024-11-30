@@ -42,7 +42,7 @@ export function HeroSection() {
             </Button>
           </div>
           <div className="flex  items-center flex-col justify-center lg:flex-row-reverse lg:items-start lg:gap-5 max-w-screen-lg text-textSecondary text-lg  text-left leading-snug ">
-            <div className="bg-backgroundChatUser text-[#E6E7FF] max-w-xs max-h-[8.25rem] rounded-3xl px-5 py-4 mt-4">
+            <div className="bg-backgroundChatUser text-textSecondary max-w-xs max-h-[8.25rem] rounded-3xl px-5 py-4 mt-4">
               <p>
                 {" "}
                 Wpływ modernistycznego stylu w projektowaniu stron
@@ -50,7 +50,7 @@ export function HeroSection() {
               </p>
             </div>
             <div className="flex lg:flex-row lg:items-start items-center flex-col-reverse justify-center">
-              <div className="relative lg:mt-6 ">
+              <div className="relative lg:mt-6">
                 <div className="relative container bg-backgroundChatBot max-w-xs h-auto rounded-3xl  px-5 py-4 mt-4">
                   <div className="absolute left-1/2 top-[-1.25rem] lg:left-[96%] lg:top-1/3 w-0 h-0 border-l-[1.25rem] border-r-[1.25rem] border-b-[1.25rem] border-transparent border-b-colorChatBot lg:transform lg:rotate-90"></div>
                   <p>
@@ -61,20 +61,20 @@ export function HeroSection() {
                     </span>
                     , którzy mogą Ci pomóc w realizacji tego tematu:
                   </p>
-                  <h3 className="text-[1.375rem] font-semibold pt-2">
+                  <p className="text-[1.375rem] font-semibold pt-2">
                     Dr hab. Anna Nowak
-                  </h3>
+                  </p>
                   <p>
                     Specjalistka w dziedzinie UX Design i Psychologii Internetu
                   </p>
-                  <h3 className="text-[1.375rem] font-semibold pt-2">
+                  <p className="text-[1.375rem] font-semibold pt-2">
                     {" "}
                     Dr Jan Kowalski
-                  </h3>
+                  </p>
                   <p>Specjalistka w dziedzinie UX Design</p>
                 </div>
               </div>
-              <Image src={ChatBot} alt="ChatBot-image" className="max-w-xs" />
+              <Image src={ChatBot} alt="" className="max-w-xs"/>
             </div>
           </div>
         </div>
