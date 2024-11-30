@@ -60,6 +60,7 @@ export function DetailsSection() {
       <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
         {cards.map((card) => (
           <FeatureCard
+            key={card.title}
             icon={card.icon}
             title={card.title}
             description={card.description}
