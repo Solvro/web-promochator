@@ -8,8 +8,7 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <>
-      <div className="flex flex-col items-center justify-center py-24 px-8 z-10">
+      <section id="hero" className="flex flex-col items-center justify-center py-24 px-8 z-10">
         <div className="flex flex-col max-w-screen-lg text-center gap-8 lg:gap-12  lg:mt-8">
           <div>
             <h1 className="text-[clamp(2.7rem,5cqw,5rem)] font-bold leading-tight">
@@ -78,7 +77,6 @@ export function HeroSection() {
             </div>
           </div>
         </div>
-      </div>
-    </>
+      </section>
   );
 }

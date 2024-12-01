@@ -15,8 +15,8 @@ export function Navbar() {
         <Image
           src={PromochatorLogo}
           alt="logo Promochatora"
-          width={128}
-          height={64}
+          width={160}
+          height={34}
         />
         <div className="hidden lg:flex flex-row gap-12 whitespace-nowrap">
           <Link href="#how-it-works">Jak to działa?</Link>
@@ -52,8 +52,7 @@ export function Navbar() {
               <Image
                 src="/assets/logo/solvro_dark.png"
                 alt="Solvro Logo"
-                className="w-40"
-                width={150}
+                width={160}
                 height={150}
               />
             </Link>
