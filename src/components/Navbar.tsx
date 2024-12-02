@@ -6,30 +6,25 @@ import { useState } from "react";
 import Link from "next/link";
 import { Equal, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import PromochatorLogo from "../../public/assets/logo/promochator-logo.svg"
 
 export function Navbar() {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
   return (
     <>
-      <div className="w-full flex flex-row justify-between items-center gap-12">
-        <div className="flex flex-row gap-2 items-center mr-auto">
-          <Image
-            src="/assets/logo/promochator_logo.png"
-            alt="Promochator Logo"
-            className="w-6"
-            width={150}
-            height={150}
-          />
-          <p className="text-lg font-semibold">
-            Promo<span className="text-[#5f7ecd]">CHAT</span>or
-          </p>
-        </div>
+      <div className="flex justify-between items-center">
+        <Image
+          src={PromochatorLogo}
+          alt="logo Promochatora"
+          width={160}
+          height={34}
+        />
         <div className="hidden lg:flex flex-row gap-12 whitespace-nowrap">
           <Link href="#how-it-works">Jak to działa?</Link>
           <Link href="#details">Jak ci pomożemy?</Link>
           <Link href="/terms-of-use">Regulamin</Link>
         </div>
-        <Link href="https://solvro.pwr.edu.pl/" className="ml-auto" passHref>
+        <Link href="https://solvro.pwr.edu.pl/" passHref>
           <Image
             src="/assets/logo/solvro_dark.png"
             alt="Solvro Logo"
@@ -58,8 +53,7 @@ export function Navbar() {
               <Image
                 src="/assets/logo/solvro_dark.png"
                 alt="Solvro Logo"
-                className="w-40"
-                width={150}
+                width={160}
                 height={150}
               />
             </Link>
