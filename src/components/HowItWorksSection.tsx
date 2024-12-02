@@ -74,7 +74,7 @@ export function HowItWorksSection() {
             <div className="flex flex-col gap-5">
                 <p className="text-colorMuted text-lg">Krok po kroku</p>
                 <h3 className="text-5xl font-bold">
-                    Jak ci <span className="text-colorPrimary">pomożemy?</span>
+                    Jak to <span className="text-colorPrimary">działa?</span>
                 </h3>
             </div>
             <div className="flex flex-col gap-14 py-20 max-w-screen-xl text-left">
