@@ -1,5 +1,3 @@
-"use client";
-
 import ChatBot from "../../public/chat-bot.png";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,7 +12,9 @@ export function HeroSection() {
             <h1 className="text-[clamp(2.7rem,5cqw,5rem)] font-bold leading-tight">
               {" "}
               Znajdź swojego{" "}
+
               <span className="text-color-primary">promotora!</span>
+
             </h1>
             <p className="text-[clamp(1.2rem,2cqw,1.75rem)] max-w-screen-md mx-auto pt-8">
               {" "}
