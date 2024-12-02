@@ -13,30 +13,6 @@ interface StepCardProps {
     height?: number;
 }
 
-function StepCard({
-    stepNumber,
-    title,
-    description,
-    image,
-    reverse,
-    width = 300,
-    height = 300,
-}: StepCardProps) {
-    return (
-        <div
-            className={`flex flex-col md:flex-row items-center gap-8 ${reverse ? "md:flex-row-reverse" : ""}`}>
-            <div className="w-full md:w-1/2 px-8 text-xl">
-                <p className="text-colorMuted">Krok {stepNumber}</p>
-                <p className="text-3xl pt-2 font-semibold">{title}</p>
-                <p className="pt-3">{description}</p>
-            </div>
-            <div className="flex justify-center items-center w-1/2">
-                <Image src={image} alt={`Krok ${stepNumber}`} width={width} height={height} />
-            </div>
-        </div>
-    );
-}
-
 export function HowItWorksSection() {
     const steps = [
         {
@@ -90,6 +66,30 @@ export function HowItWorksSection() {
                         height={step.height}
                     />
                 ))}
+            </div>
+        </div>
+    );
+}
+
+function StepCard({
+    stepNumber,
+    title,
+    description,
+    image,
+    reverse,
+    width = 300,
+    height = 300,
+}: StepCardProps) {
+    return (
+        <div
+            className={`flex flex-col md:flex-row items-center gap-8 ${reverse ? "md:flex-row-reverse" : ""}`}>
+            <div className="w-full md:w-1/2 px-8 text-xl">
+                <p className="text-colorMuted">Krok {stepNumber}</p>
+                <p className="text-3xl pt-2 font-semibold">{title}</p>
+                <p className="pt-3">{description}</p>
+            </div>
+            <div className="flex justify-center items-center w-1/2">
+                <Image src={image} alt={''} width={width} height={height} />
             </div>
         </div>
     );
