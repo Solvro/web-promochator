@@ -14,7 +14,7 @@ export function HeroSection() {
             <h1 className="text-[clamp(2.7rem,5cqw,5rem)] font-bold leading-tight">
               {" "}
               Znajdź swojego{" "}
-              <span className="text-colorPrimary">promotora!</span>
+              <span className="text-color-primary">promotora!</span>
             </h1>
             <p className="text-[clamp(1.2rem,2cqw,1.75rem)] max-w-screen-md mx-auto pt-8">
               {" "}
@@ -40,8 +40,8 @@ export function HeroSection() {
               <Link href="">Dowiedz się więcej</Link>
             </Button>
           </div>
-          <div className="flex  items-center flex-col justify-center lg:flex-row-reverse lg:items-start lg:gap-5 max-w-screen-lg text-textSecondary text-lg  text-left leading-snug ">
-            <div className="bg-backgroundChatUser text-textSecondary max-w-xs max-h-[8.25rem] rounded-3xl px-5 py-4 mt-4">
+          <div className="flex  items-center flex-col justify-center lg:flex-row-reverse lg:items-start lg:gap-5 max-w-screen-lg text-t-secondary text-lg  text-left leading-snug ">
+            <div className="bg-chat-user text-t-secondary max-w-xs max-h-[8.25rem] rounded-3xl px-5 py-4 mt-4">
               <p>
                 {" "}
                 Wpływ modernistycznego stylu w projektowaniu stron
@@ -50,11 +50,11 @@ export function HeroSection() {
             </div>
             <div className="flex lg:flex-row lg:items-start items-center flex-col-reverse justify-center">
               <div className="relative lg:mt-6">
-                <div className="relative container bg-backgroundChatBot max-w-xs h-auto rounded-3xl  px-5 py-4 mt-4">
+                <div className="relative container bg-chat-bot max-w-xs h-auto rounded-3xl  px-5 py-4 mt-4">
                   <div className="absolute left-1/2 top-[-1.25rem] lg:left-[96%] lg:top-1/3 w-0 h-0 border-l-[1.25rem] border-r-[1.25rem] border-b-[1.25rem] border-transparent border-b-colorChatBot lg:transform lg:rotate-90"></div>
                   <p>
                     Oto{" "}
-                    <span className="text-colorPrimary font-semibold">
+                    <span className="text-color-primary font-semibold">
                       {" "}
                       promotorzy{" "}
                     </span>

@@ -9,8 +9,8 @@ interface FeatureCardProps {
 function FeatureCard({ icon, title, description }: FeatureCardProps) {
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="size-24 bg-backgroundChatBot rounded-full flex items-center justify-center">
-        <div className="size-16 bg-backgroundChatUser rounded-full flex items-center justify-center text-xl">
+      <div className="size-24 bg-chat-bot rounded-full flex items-center justify-center">
+        <div className="size-16 bg-chat-user rounded-full flex items-center justify-center text-xl">
           {icon}
         </div>
       </div>
@@ -47,9 +47,9 @@ export function DetailsSection() {
   return (
     <section id="details" className="flex flex-col gap-6 items-center justify-center text-center">
       <div className="flex flex-col gap-4">
-        <p className="text-colorMuted text-lg">Szczegóły</p>
+        <p className="text-color-muted text-lg">Szczegóły</p>
         <h3 className="text-5xl font-bold">
-          Jak ci <span className="text-colorPrimary">pomożemy?</span>
+          Jak ci <span className="text-color-primary">pomożemy?</span>
         </h3>
         <p className="max-w-lg text-lg font-medium">
           Nasza aplikacja została zaprojektowana tak, aby najlepiej pomóc
