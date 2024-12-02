@@ -6,7 +6,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Equal, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import PromochatorLogo from "../../public/assets/logo/promochator-logo.svg"
+import PromochatorLogo from "../../public/assets/logo/promochator-logo.svg";
 
 export function Navbar() {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);

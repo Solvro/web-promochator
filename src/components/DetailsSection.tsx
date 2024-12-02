@@ -45,7 +45,10 @@ export function DetailsSection() {
   ];
 
   return (
-    <section id="details" className="flex flex-col gap-6 items-center justify-center text-center">
+    <section
+      id="details"
+      className="flex flex-col gap-6 items-center justify-center text-center"
+    >
       <div className="flex flex-col gap-4">
         <p className="text-color-muted text-lg">Szczegóły</p>
         <h3 className="text-5xl font-bold">
