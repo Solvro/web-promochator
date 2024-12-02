@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 
-
-
 import { useState } from "react";
 import Link from "next/link";
 import { Equal, X } from "lucide-react";
@@ -84,4 +82,3 @@ export function Navbar() {
     </>
   );
 }
-
