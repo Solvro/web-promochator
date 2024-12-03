@@ -16,7 +16,7 @@ import Link from "next/link";
 
 export function ChatSidebar() {
   return (
-    <Sidebar>
+    <Sidebar className="bg-backgroundSidebar">
       <SidebarHeader className="flex-row justify-between">
         <SidebarTrigger />
         <div>
@@ -35,7 +35,17 @@ export function ChatSidebar() {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="/">Wpływ modernistycznego...</Link>
+                  <Link href="/">
+                    <span>Wpływ modernistycznego...</span>
+                    <Button
+                      size="icon"
+                      className="gro"
+                      variant="transparent"
+                      title="Oznacz jako ulubione"
+                    >
+                      <Star size={12} />
+                    </Button>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
