@@ -1,5 +1,5 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { ChatSidebar } from "@/components/ChatSidebar";
+import { ChatSidebar } from "@/components/ChatSidebar/ChatSidebar";
 
 export default function ChatLayout({
   children,

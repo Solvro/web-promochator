@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Sidebar,
   SidebarContent,
@@ -6,20 +8,18 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { NotebookPen, Star } from "lucide-react";
-import Link from "next/link";
+import { ChatSidebarTrigger } from "@/components/ChatSidebar/ChatSidebarTrigger";
+import { ChatSidebarLink } from "@/components/ChatSidebar/ChatSidebarLink";
 
 export function ChatSidebar() {
   return (
-    <Sidebar className="bg-backgroundSidebar">
-      <SidebarHeader className="flex-row justify-between">
-        <SidebarTrigger />
-        <div>
+    <Sidebar>
+      <SidebarHeader className="flex-row justify-between px-4 pt-4 pb-0">
+        <ChatSidebarTrigger />
+        <div className="flex gap-2">
           <Button size="icon" variant="transparent" title="Zamknij menu">
             <Star size={24} />
           </Button>
@@ -28,26 +28,15 @@ export function ChatSidebar() {
           </Button>
         </div>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="p-2">
         <SidebarGroup>
           <SidebarGroupLabel>Dzisiaj</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href="/">
-                    <span>Wpływ modernistycznego...</span>
-                    <Button
-                      size="icon"
-                      className="gro"
-                      variant="transparent"
-                      title="Oznacz jako ulubione"
-                    >
-                      <Star size={12} />
-                    </Button>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
+              <ChatSidebarLink
+                href={"/chat"}
+                title={"Wpływ modernistycznego lorem ipsum"}
+              />
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
