@@ -1,9 +1,9 @@
 "use client";
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, useRef, ChangeEvent } from "react";
 import { Textarea } from "./ui/textarea";
 import { useAutoResizeTextArea } from "@/hooks/useAutoResizeTextArea";
 
-export interface AutoResizeTextareaProps {
+export interface AutoResizeTextAreaProps {
   id: string;
   placeholder: string;
   className?: string;
@@ -13,13 +13,19 @@ export function AutoResizeTextArea({
   id,
   placeholder,
   className,
-}: AutoResizeTextareaProps) {
+}: AutoResizeTextAreaProps) {
   const [text, setText] = useState<string>("");
-  const textAreaRef = useAutoResizeTextArea();
-
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  const adjustHeight = () => {
+    const textarea = textAreaRef.current;
+    if (textarea) {
+      textarea.style.height = "auto";
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+  };
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
-    console.log(textAreaRef.current?.scrollHeight);
+    adjustHeight();
   };
 
   return (
