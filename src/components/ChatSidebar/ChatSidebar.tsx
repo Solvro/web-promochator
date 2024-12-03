@@ -20,10 +20,10 @@ export function ChatSidebar() {
       <SidebarHeader className="flex-row justify-between px-4 pt-4 pb-0">
         <ChatSidebarTrigger />
         <div className="flex gap-2">
-          <Button size="icon" variant="transparent" title="Zamknij menu">
+          <Button size="icon" variant="transparent" title="Ulubione rozmowy">
             <Star size={24} />
           </Button>
-          <Button size="icon" variant="transparent" title="Zamknij menu">
+          <Button size="icon" variant="transparent" title="Utwórz nową rozmowę">
             <NotebookPen size={24} />
           </Button>
         </div>
