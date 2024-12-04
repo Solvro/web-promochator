@@ -16,7 +16,7 @@ export function Navbar() {
         <Image
           src={PromochatorLogo}
           alt="logo Promochatora"
-          width={160}
+          width={180}
           height={34}
         />
         <div className="hidden lg:flex flex-row gap-12 whitespace-nowrap">
