@@ -7,7 +7,7 @@ export default function ChatLayout({
   return (
     <SidebarProvider>
       <ChatSidebar />
-      <div>{children}</div>
+      {children}
     </SidebarProvider>
   );
 }

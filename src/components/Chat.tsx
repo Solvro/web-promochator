@@ -1,11 +1,10 @@
-import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import Image from "next/image";
 import { AutoResizeTextArea } from "./AutoResizeTextarea";
 
 export function Chat() {
   return (
-    <div className="bg-chat flex flex-col items-center text-t-secondary">
+    <div className="flex flex-col items-center gap-y-8 align-middle text-t-secondary">
       <PromochatorLogo />
       <ChatTextArea />
     </div>
@@ -14,12 +13,14 @@ export function Chat() {
 
 function ChatTextArea() {
   return (
-    <div className="flex flex-col items-center gap-y-2">
-      <Label htmlFor="prompt">Pomóc ci wybrać promotora?</Label>
+    <div className="flex flex-col items-center gap-y-3">
+      <Label htmlFor="prompt" className="font-normal">
+        Pomóc ci wybrać promotora?
+      </Label>
       <AutoResizeTextArea
         id="prompt"
         placeholder="Znajdź mi idealnego promotora :)"
-        className="max-h-[300px] min-h-fit min-w-[400px] resize-none rounded-lg border-color-primary bg-chat-user"
+        className="max-h-[300px] min-h-fit resize-none rounded-xl border-color-primary bg-chat-user md:w-[50vw]"
       />
     </div>
   );
@@ -27,9 +28,13 @@ function ChatTextArea() {
 
 function PromochatorLogo() {
   return (
-    <div className="flex flex-col items-center">
-      <PromochatorIcon imageWidth={32} imageHeight={32} imageClassName="p-2" />
-      <span>
+    <div className="flex flex-col items-center gap-y-4">
+      <PromochatorIcon
+        imageWidth={36}
+        imageHeight={36}
+        imageClassName="py-2 px-1"
+      />
+      <span className="text-3xl">
         Promo<span className="font-bold text-color-primary">CHAT</span>or
       </span>
     </div>
@@ -46,7 +51,7 @@ function PromochatorIcon({
   imageClassName?: string;
 }) {
   return (
-    <div className="flex aspect-square justify-center rounded-full border-[1px] border-white">
+    <div className="flex aspect-square justify-center rounded-full border-2 border-white">
       <Image
         src="/assets/logo/promochator-icon.svg"
         alt="logo Promochatora"

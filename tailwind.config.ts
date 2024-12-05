@@ -20,7 +20,7 @@ export default {
         "color-muted": "#989AAE",
         "chat-bot": "#1D2150",
         "chat-user": "#34386A",
-        chat: "#232653",
+        chat: "#060C28",
         "t-secondary": "#E6E7FF",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
