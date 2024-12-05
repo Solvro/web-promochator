@@ -48,7 +48,7 @@ export function HowItWorksSection() {
   return (
     <section
       id="how-it-works"
-      className="flex flex-col gap-6 items-center justify-center text-center"
+      className="flex flex-col gap-6 items-center justify-center text-center pt-10"
     >
       <div className="flex flex-col gap-5">
         <p className="text-color-muted text-lg">Krok po kroku</p>
@@ -56,7 +56,7 @@ export function HowItWorksSection() {
           Jak to <span className="text-color-primary">działa?</span>
         </h3>
       </div>
-      <div className="flex flex-col gap-14 py-20 max-w-screen-xl text-left">
+      <div className="flex flex-col gap-14 py-14 max-w-screen-xl text-left">
         {steps.map((step) => (
           <StepCard
             key={step.stepNumber}
@@ -85,9 +85,8 @@ function StepCard({
 }: StepCardProps) {
   return (
     <div
-      className={`flex flex-col md:flex-row items-center gap-8 ${
-        reverse ? "md:flex-row-reverse" : ""
-      }`}
+      className={`flex flex-col md:flex-row items-center gap-8 ${reverse ? "md:flex-row-reverse" : ""
+        }`}
     >
       <div className="w-full md:w-1/2 px-8 text-xl">
         <p className="text-color-muted">Krok {stepNumber}</p>

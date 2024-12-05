@@ -8,11 +8,11 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="z-10 flex flex-col items-center justify-center px-8 py-24"
+      className="flex flex-col items-center justify-center py-12 px-8 z-10"
     >
       <div className="flex max-w-screen-lg flex-col gap-8 text-center lg:mt-8 lg:gap-12">
         <div>
-          <h1 className="text-[clamp(2.7rem,5cqw,5rem)] font-bold leading-tight">
+          <h1 className="text-[clamp(3rem,6cqw,5rem)] font-bold leading-tight">
             {" "}
             Znajdź swojego{" "}
             <span className="text-color-primary">promotora!</span>
