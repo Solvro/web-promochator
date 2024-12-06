@@ -1,8 +1,10 @@
 "use client";
-import React, { useState, useRef, ChangeEvent } from "react";
+import React, { useState, useRef, ChangeEvent, useEffect } from "react";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { ArrowUp } from "lucide-react";
+import { v4 } from "uuid";
+import { useRouter } from "next/navigation";
 
 export interface AutoResizeTextAreaProps {
   id: string;
@@ -16,6 +18,8 @@ export function AutoResizeTextArea({
   className,
 }: AutoResizeTextAreaProps) {
   const [text, setText] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const router = useRouter();
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const adjustHeight = () => {
@@ -32,7 +36,7 @@ export function AutoResizeTextArea({
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full max-w-[350px] md:max-w-[400px] lg:max-w-[500px]">
       <Textarea
         ref={textAreaRef}
         id={id}
@@ -41,12 +45,17 @@ export function AutoResizeTextArea({
         className={className}
         placeholder={placeholder}
         rows={1}
-        cols={12}
       />
       <Button
         className="absolute right-2 top-1 size-7 rounded-full bg-sidebar"
         variant="transparent"
         size="icon"
+        onClick={() => {
+          setIsSubmitting(true);
+          const newUuid = v4();
+          router.push(`/chat/${newUuid}`);
+        }}
+        disabled={isSubmitting}
       >
         <ArrowUp size="20"></ArrowUp>
       </Button>

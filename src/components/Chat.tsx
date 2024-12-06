@@ -4,7 +4,7 @@ import { AutoResizeTextArea } from "./AutoResizeTextarea";
 
 export function Chat() {
   return (
-    <div className="flex flex-col items-center gap-y-8 align-middle text-t-secondary">
+    <div className="flex w-full flex-col items-center gap-y-8 align-middle text-t-secondary">
       <PromochatorLogo />
       <ChatTextArea />
     </div>
@@ -13,14 +13,14 @@ export function Chat() {
 
 function ChatTextArea() {
   return (
-    <div className="flex flex-col items-center gap-y-3">
+    <div className="flex w-full flex-col items-center gap-y-3">
       <Label htmlFor="prompt" className="font-normal">
         Pomóc ci wybrać promotora?
       </Label>
       <AutoResizeTextArea
         id="prompt"
         placeholder="Znajdź mi idealnego promotora :)"
-        className="max-h-[300px] min-h-fit resize-none rounded-xl border-color-primary bg-chat-user md:w-[50vw]"
+        className="scrollbar-thin scrollbar-thumb-chat scrollbar-track-chat-user max-h-[300px] min-h-fit resize-none rounded-xl border-color-primary bg-chat-user bg-scroll"
       />
     </div>
   );
