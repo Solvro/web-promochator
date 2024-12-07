@@ -1,9 +1,23 @@
-import { Chat } from "@/components/chat";
+import { Supervisor } from "@/components/Supervisor";
+import { Chat, PromochatorIcon } from "@/components/chat";
 
 export default function ChatPage() {
   return (
-    <div className="flex flex-grow items-center justify-center">
+    <div className="flex flex-grow flex-col items-center justify-center gap-4">
       <Chat />
+      <div className="space-y-4">
+        <div className="flex items-center gap-4">
+          <PromochatorIcon
+            imageWidth={36}
+            imageHeight={36}
+            imageClassName="py-2 px-1"
+          />
+          <p className="rounded-2xl bg-chat-bot px-4 py-3">
+            Oto promotorzy, którzy mogą Ci pomóc w realizacji tego tematu:
+          </p>
+        </div>
+        <Supervisor />
+      </div>
     </div>
   );
 }
