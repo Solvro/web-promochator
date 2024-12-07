@@ -10,62 +10,65 @@ export function HeroSection() {
       id="hero"
       className="flex flex-col items-center justify-center py-12 px-8 z-10"
     >
-      <div className="flex flex-col max-w-screen-lg text-center gap-8 lg:gap-12  lg:mt-8">
+      <div className="flex max-w-screen-lg flex-col gap-8 text-center lg:mt-8 lg:gap-12">
         <div>
           <h1 className="text-[clamp(3rem,6cqw,5rem)] font-bold leading-tight">
             {" "}
             Znajdź swojego{" "}
             <span className="text-color-primary">promotora!</span>
           </h1>
-          <p className="text-[clamp(1.2rem,2cqw,1.75rem)] max-w-screen-md mx-auto pt-8">
+          <p className="mx-auto max-w-screen-md pt-8 text-[clamp(1.2rem,2cqw,1.75rem)]">
             {" "}
             Nasz system rekomendacyjny dopasuje go do tytułu lub opisu twojej
             pracy dyplomowej.{" "}
           </p>
         </div>
-        <div className="flex flex-col md:flex-row justify-center gap-4 text-lg">
+        <div className="flex flex-col justify-center gap-4 text-lg md:flex-row">
           <Button
             asChild
             variant={"secondary"}
-            className="text-lg px-6 py-7 rounded-xl"
+            className="rounded-xl px-6 py-7 text-lg"
           >
-            <Link className="flex justify-center items-center gap-2" href="">
+            <Link
+              className="flex items-center justify-center gap-2"
+              href="/chat"
+            >
               Wypróbuj <ArrowUpRight size={32} />
             </Link>
           </Button>
           <Button
             asChild
             variant={"outline"}
-            className="text-lg px-5 py-6 md:px-6 md:py-7 rounded-xl bg-transparent"
+            className="rounded-xl bg-transparent px-5 py-6 text-lg md:px-6 md:py-7"
           >
             <Link href="">Dowiedz się więcej</Link>
           </Button>
         </div>
-        <div className="flex  items-center flex-col justify-center lg:flex-row-reverse lg:items-start lg:gap-5 max-w-screen-lg text-t-secondary text-lg  text-left leading-snug ">
-          <div className="bg-chat-user text-t-secondary max-w-xs max-h-32 rounded-3xl px-5 py-4 mt-4">
+        <div className="flex max-w-screen-lg flex-col items-center justify-center text-left text-lg leading-snug text-t-secondary lg:flex-row-reverse lg:items-start lg:gap-5">
+          <div className="mt-4 max-h-32 max-w-xs rounded-3xl bg-chat-user px-5 py-4 text-t-secondary">
             <p>
               {" "}
               Wpływ modernistycznego stylu w projektowaniu stron internetowychna
               percepcję i doświadczenia użytkownika.
             </p>
           </div>
-          <div className="flex lg:flex-row lg:items-start items-center flex-col-reverse justify-center">
+          <div className="flex flex-col-reverse items-center justify-center lg:flex-row lg:items-start">
             <div className="relative lg:mt-6">
-              <div className="relative container bg-chat-bot max-w-xs h-auto rounded-3xl px-5 py-4 mt-4">
+              <div className="container relative mt-4 h-auto max-w-xs rounded-3xl bg-chat-bot px-5 py-4">
                 {/* <div className="absolute left-1/2 -top-5 lg:left-[96%] lg:top-1/3 w-0 h-0 border-l-[1.25rem] border-r-[1.25rem] border-b-[1.25rem] border-transparent border-b-colorChatBot lg:transform lg:rotate-90"></div> */}
                 <p>
                   Oto{" "}
-                  <span className="text-color-primary font-semibold">
+                  <span className="font-semibold text-color-primary">
                     {" "}
                     promotorzy{" "}
                   </span>
                   , którzy mogą Ci pomóc w realizacji tego tematu:
                 </p>
-                <p className="text-xl font-semibold pt-2">Dr hab. Anna Nowak</p>
+                <p className="pt-2 text-xl font-semibold">Dr hab. Anna Nowak</p>
                 <p>
                   Specjalistka w dziedzinie UX Design i Psychologii Internetu
                 </p>
-                <p className="text-xl font-semibold pt-2"> Dr Jan Kowalski</p>
+                <p className="pt-2 text-xl font-semibold"> Dr Jan Kowalski</p>
                 <p>Specjalistka w dziedzinie UX Design</p>
               </div>
             </div>

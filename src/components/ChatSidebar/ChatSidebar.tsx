@@ -16,8 +16,8 @@ import { ChatSidebarLink } from "@/components/ChatSidebar/ChatSidebarLink";
 
 export function ChatSidebar() {
   return (
-    <Sidebar>
-      <SidebarHeader className="flex-row justify-between px-4 pt-4 pb-0">
+    <Sidebar className="border-sidebar">
+      <SidebarHeader className="flex-row justify-between px-4 pb-0 pt-4">
         <ChatSidebarTrigger />
         <div className="flex gap-2">
           <Button size="icon" variant="transparent" title="Ulubione rozmowy">

@@ -1,9 +1,9 @@
-import { SidebarTrigger } from "@/components/ui/sidebar";
+import { Chat } from "@/components/Chat";
 
-export default function Chat() {
+export default function ChatPage() {
   return (
-    <div>
-      <SidebarTrigger />
+    <div className="flex flex-grow items-center justify-center">
+      <Chat />
     </div>
   );
 }

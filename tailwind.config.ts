@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -20,6 +19,7 @@ export default {
         "color-muted": "#989AAE",
         "chat-bot": "#1D2150",
         "chat-user": "#34386A",
+        "chat-background": "#060C28",
         "t-secondary": "#E6E7FF",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -79,5 +79,5 @@ export default {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;

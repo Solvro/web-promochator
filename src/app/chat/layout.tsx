@@ -1,5 +1,6 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { ChatSidebar } from "@/components/ChatSidebar";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export default function ChatLayout({
   children,
@@ -7,7 +8,10 @@ export default function ChatLayout({
   return (
     <SidebarProvider>
       <ChatSidebar />
-      <div>{children}</div>
+      <div className="bg-chat-background flex h-screen w-full flex-col text-white">
+        <SidebarTrigger className="border-0" />
+        {children}
+      </div>
     </SidebarProvider>
   );
 }
