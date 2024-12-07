@@ -8,7 +8,7 @@ export default function ChatLayout({
   return (
     <SidebarProvider>
       <ChatSidebar />
-      <div className="flex h-screen w-full flex-col bg-chat text-white">
+      <div className="bg-chat-background flex h-screen w-full flex-col text-white">
         <SidebarTrigger className="border-0" />
         {children}
       </div>
