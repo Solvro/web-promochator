@@ -11,6 +11,7 @@ export function Chat() {
   );
 }
 
+//TODO migrate to ProseMirror lib
 function ChatTextArea() {
   return (
     <div className="flex w-full flex-col items-center gap-y-3">
@@ -20,7 +21,7 @@ function ChatTextArea() {
       <AutoResizeTextArea
         id="prompt"
         placeholder="Znajdź mi idealnego promotora :)"
-        className="scrollbar-thin scrollbar-thumb-chat scrollbar-track-chat-user max-h-[300px] min-h-fit resize-none rounded-xl border-color-primary bg-chat-user bg-scroll"
+        className="min-h-fit resize-none overflow-hidden rounded-xl border-color-primary bg-chat-user"
       />
     </div>
   );

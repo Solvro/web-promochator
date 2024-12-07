@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, ChangeEvent, useEffect } from "react";
+import React, { useState, useRef, ChangeEvent } from "react";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { ArrowUp } from "lucide-react";
@@ -53,6 +53,7 @@ export function AutoResizeTextArea({
         onClick={() => {
           setIsSubmitting(true);
           const newUuid = v4();
+          //TODO adding conversation to localstorage there?
           router.push(`/chat/${newUuid}`);
         }}
         disabled={isSubmitting}
