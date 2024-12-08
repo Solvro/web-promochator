@@ -16,7 +16,13 @@ export default function ChatPage() {
             Oto promotorzy, którzy mogą Ci pomóc w realizacji tego tematu:
           </p>
         </div>
-        <Supervisor />
+        <Supervisor
+          name="Dr hab. Anna Nowak"
+          specialization="Specjalistka w dziedzinie UX Design i Psychologii"
+          description="Współpracowała z wieloma firmami IT, pomagając im tworzyć produkty
+          przyjazne dla użytkownika."
+          highlight
+        />
       </div>
     </div>
   );
