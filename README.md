@@ -10,7 +10,7 @@
   "output": {
     "faculty": "Wydział informatyki", //faculty - it may improve response from model (need to wait for ml team decision) - we may assume we'll need to add a select for it
     "question": "Web development", //user's prompt - we store it with saved supervisor to give context to user
-    "retrieved_docs": [], //no idea what's that
+    "retrieved_docs": [], //leftovers from previous implementation - don't care about this
     "prompt": "", //prompt for model, we don't care about it
     "recommendation": {
       // most important stuff
