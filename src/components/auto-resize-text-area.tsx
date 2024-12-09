@@ -1,10 +1,13 @@
 "use client";
-import React, { useState, useRef, ChangeEvent } from "react";
-import { Textarea } from "./ui/textarea";
-import { Button } from "./ui/button";
+
 import { ArrowUp } from "lucide-react";
-import { v4 } from "uuid";
 import { useRouter } from "next/navigation";
+import type { ChangeEvent } from "react";
+import React, { useRef, useState } from "react";
+import { v4 } from "uuid";
+
+import { Button } from "./ui/button";
+import { Textarea } from "./ui/textarea";
 
 export interface AutoResizeTextAreaProps {
   id: string;
@@ -26,12 +29,12 @@ export function AutoResizeTextArea({
     const textarea = textAreaRef.current;
     if (textarea) {
       textarea.style.height = "auto";
-      textarea.style.height = `${textarea.scrollHeight}px`;
+      textarea.style.height = `${textarea.scrollHeight.toString()}px`;
     }
   };
 
-  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.target.value);
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setText(event.target.value);
     adjustHeight();
   };
 

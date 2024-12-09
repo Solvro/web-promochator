@@ -1,8 +1,9 @@
 "use client";
 
-import { useSidebar } from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { useSidebar } from "@/components/ui/sidebar";
 
 export function ChatSidebarTrigger() {
   const { toggleSidebar } = useSidebar();

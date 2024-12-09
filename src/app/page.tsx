@@ -1,12 +1,13 @@
-import { HeroSection } from "@/components/HeroSection";
-import { Navbar } from "../components/Navbar";
-import { DetailsSection } from "@/components/DetailsSection";
-import { HowItWorksSection } from "@/components/HowItWorksSection";
-import { Footer } from "@/components/Footer";
+import { DetailsSection } from "@/components/details-section";
+import { Footer } from "@/components/footer";
+import { HeroSection } from "@/components/hero-section";
+import { HowItWorksSection } from "@/components/how-it-works-section";
+
+import { Navbar } from "../components/navbar";
 
 export default function Home() {
   return (
-    <div className="text-white min-h-screen flex justify-center bg-gradient-to-b from-[#030313] to-[#040A2E]">
+    <div className="flex min-h-screen justify-center bg-gradient-to-b from-[#030313] to-[#040A2E] text-white">
       <div className="container p-6">
         <Navbar />
         <HeroSection />

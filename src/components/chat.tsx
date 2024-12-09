@@ -1,6 +1,7 @@
-import { Label } from "./ui/label";
 import Image from "next/image";
-import { AutoResizeTextArea } from "./AutoResizeTextarea";
+
+import { AutoResizeTextArea } from "./auto-resize-text-area";
+import { Label } from "./ui/label";
 
 export function Chat() {
   return (
