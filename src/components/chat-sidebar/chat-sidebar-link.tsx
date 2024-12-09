@@ -1,6 +1,7 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 
 export function ChatSidebarLink({
@@ -17,10 +18,10 @@ export function ChatSidebarLink({
             className="flex-none"
             variant="transparent"
             title="Oznacz jako ulubione"
-            onClick={(e) => {
+            onClick={(event) => {
               // Prevent link from redirecting
-              e.preventDefault();
-              e.stopPropagation();
+              event.preventDefault();
+              event.stopPropagation();
               // TODO: implement button action
             }}
           >

@@ -1,5 +1,10 @@
 "use client";
 
+import { NotebookPen, Star } from "lucide-react";
+
+import { ChatSidebarLink } from "@/components/chat-sidebar/chat-sidebar-link";
+import { ChatSidebarTrigger } from "@/components/chat-sidebar/chat-sidebar-trigger";
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -9,10 +14,6 @@ import {
   SidebarHeader,
   SidebarMenu,
 } from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button";
-import { NotebookPen, Star } from "lucide-react";
-import { ChatSidebarTrigger } from "@/components/ChatSidebar/ChatSidebarTrigger";
-import { ChatSidebarLink } from "@/components/ChatSidebar/ChatSidebarLink";
 
 export function ChatSidebar() {
   return (

@@ -1,4 +1,6 @@
-import Image, { StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
+import Image from "next/image";
+
 import Step1Button from "../../public/step1-button.png";
 import Step2Describe from "../../public/step2-describe-chat.png";
 import Step3Answer from "../../public/step3-answer.png";
@@ -48,15 +50,15 @@ export function HowItWorksSection() {
   return (
     <section
       id="how-it-works"
-      className="flex flex-col gap-6 items-center justify-center text-center pt-10"
+      className="flex flex-col items-center justify-center gap-6 pt-10 text-center"
     >
       <div className="flex flex-col gap-5">
-        <p className="text-color-muted text-lg">Krok po kroku</p>
+        <p className="text-lg text-color-muted">Krok po kroku</p>
         <h3 className="text-5xl font-bold">
           Jak to <span className="text-color-primary">działa?</span>
         </h3>
       </div>
-      <div className="flex flex-col gap-14 py-14 max-w-screen-xl text-left">
+      <div className="flex max-w-screen-xl flex-col gap-14 py-14 text-left">
         {steps.map((step) => (
           <StepCard
             key={step.stepNumber}
@@ -85,15 +87,16 @@ function StepCard({
 }: StepCardProps) {
   return (
     <div
-      className={`flex flex-col md:flex-row items-center gap-8 ${reverse ? "md:flex-row-reverse" : ""
-        }`}
+      className={`flex flex-col items-center gap-8 md:flex-row ${
+        reverse === true ? "md:flex-row-reverse" : ""
+      }`}
     >
-      <div className="w-full md:w-1/2 px-8 text-xl">
+      <div className="w-full px-8 text-xl md:w-1/2">
         <p className="text-color-muted">Krok {stepNumber}</p>
-        <p className="text-3xl pt-2 font-semibold">{title}</p>
+        <p className="pt-2 text-3xl font-semibold">{title}</p>
         <p className="pt-3">{description}</p>
       </div>
-      <div className="flex justify-center items-center w-1/2">
+      <div className="flex w-1/2 items-center justify-center">
         <Image src={image} alt={""} width={imageWidth} height={imageHeight} />
       </div>
     </div>

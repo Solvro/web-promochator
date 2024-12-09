@@ -1,14 +1,16 @@
-import ChatBot from "../../public/chat-bot.png";
 import { ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
+
+import ChatBot from "../../public/chat-bot.png";
 
 export function HeroSection() {
   return (
     <section
       id="hero"
-      className="flex flex-col items-center justify-center py-12 px-8 z-10"
+      className="z-10 flex flex-col items-center justify-center px-8 py-12"
     >
       <div className="flex max-w-screen-lg flex-col gap-8 text-center lg:mt-8 lg:gap-12">
         <div>
@@ -41,7 +43,7 @@ export function HeroSection() {
             variant={"outline"}
             className="rounded-xl bg-transparent px-5 py-6 text-lg md:px-6 md:py-7"
           >
-            <Link href="">Dowiedz się więcej</Link>
+            <Link href="#how-it-works">Dowiedz się więcej</Link>
           </Button>
         </div>
         <div className="flex max-w-screen-lg flex-col items-center justify-center text-left text-lg leading-snug text-t-secondary lg:flex-row-reverse lg:items-start lg:gap-5">

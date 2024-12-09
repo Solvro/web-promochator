@@ -9,8 +9,8 @@ interface FeatureCardProps {
 function FeatureCard({ icon, title, description }: FeatureCardProps) {
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="size-24 bg-chat-bot rounded-full flex items-center justify-center">
-        <div className="size-16 bg-chat-user rounded-full flex items-center justify-center text-xl">
+      <div className="flex size-24 items-center justify-center rounded-full bg-chat-bot">
+        <div className="flex size-16 items-center justify-center rounded-full bg-chat-user text-xl">
           {icon}
         </div>
       </div>
@@ -47,10 +47,10 @@ export function DetailsSection() {
   return (
     <section
       id="details"
-      className="flex flex-col gap-6 items-center justify-center text-center"
+      className="flex flex-col items-center justify-center gap-6 text-center"
     >
       <div className="flex flex-col gap-4">
-        <p className="text-color-muted text-lg">Szczegóły</p>
+        <p className="text-lg text-color-muted">Szczegóły</p>
         <h3 className="text-5xl font-bold">
           Jak ci <span className="text-color-primary">pomożemy?</span>
         </h3>
@@ -60,7 +60,7 @@ export function DetailsSection() {
           dyplomowych.
         </p>
       </div>
-      <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {cards.map((card) => (
           <FeatureCard
             key={card.title}
