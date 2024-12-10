@@ -2,14 +2,18 @@
 
 import { notFound, useParams } from "next/navigation";
 
-export default function ConversationPage({}) {
-  const params = useParams<{ uuid: string }>();
+interface Chat {
+  prompt: string;
+}
 
-  const chat = localStorage.getItem(params.uuid);
+export default function ConversationPage() {
+  const parameters = useParams<{ uuid: string }>();
 
-  if (!chat) {
+  if (localStorage.getItem(parameters.uuid) === null) {
     notFound();
   }
 
-  return <div>{JSON.parse(chat).prompt}</div>;
+  const chat = JSON.parse(localStorage.getItem(parameters.uuid)!) as Chat;
+
+  return <div>{chat.prompt}</div>;
 }
