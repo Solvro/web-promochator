@@ -46,7 +46,6 @@ export function PromptInput() {
           router.push(`/chat/${newUuid}`);
         }}
         disabled={isSubmitting}
-        type="submit"
       >
         <ArrowUp size={20}></ArrowUp>
       </Button>
