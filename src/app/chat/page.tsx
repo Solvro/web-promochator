@@ -1,5 +1,5 @@
-import { Supervisor } from "@/components/Supervisor";
 import { Chat, PromochatorIcon } from "@/components/chat";
+import { Supervisor } from "@/components/supervisor";
 
 export default function ChatPage() {
   return (
