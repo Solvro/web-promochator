@@ -6,6 +6,8 @@ import type { ChangeEvent } from "react";
 import React, { useRef, useState } from "react";
 import { v4 } from "uuid";
 
+import type { Chat } from "@/types/chat";
+
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 
@@ -56,8 +58,26 @@ export function AutoResizeTextArea({
         onClick={() => {
           setIsSubmitting(true);
           const newUuid = v4();
-          //TODO adding conversation to localstorage there?
-          localStorage.setItem(newUuid, JSON.stringify({ prompt: text }));
+          // Check if chats exist in localStorage
+          if (localStorage.getItem("chats") === null) {
+            // If not, create a new array with the new chat and store it in localStorage
+            localStorage.setItem(
+              "chats",
+              JSON.stringify([
+                { uuid: newUuid, prompt: text, recommendation: {} },
+              ]),
+            );
+          } else {
+            // If chats exist in localStorage, add the new chat to the existing array
+            const chats = JSON.parse(localStorage.getItem("chats")!) as Chat[];
+            localStorage.setItem(
+              "chats",
+              JSON.stringify([
+                ...chats,
+                { uuid: newUuid, prompt: text, recommendation: {} },
+              ]),
+            );
+          }
           router.push(`/chat/${newUuid}`);
         }}
         disabled={isSubmitting}
