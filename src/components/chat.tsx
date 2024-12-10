@@ -1,29 +1,18 @@
 import Image from "next/image";
 
-import { AutoResizeTextArea } from "./auto-resize-text-area";
+import { PromptInput } from "./prompt-input";
 import { Label } from "./ui/label";
 
 export function Chat() {
   return (
     <div className="flex w-full flex-col items-center gap-y-8 align-middle text-t-secondary">
       <PromochatorLogo />
-      <ChatTextArea />
-    </div>
-  );
-}
-
-//TODO migrate to ProseMirror lib
-function ChatTextArea() {
-  return (
-    <div className="flex w-full flex-col items-center gap-y-3">
-      <Label htmlFor="prompt" className="font-normal">
-        Pomóc ci wybrać promotora?
-      </Label>
-      <AutoResizeTextArea
-        id="prompt"
-        placeholder="Znajdź mi idealnego promotora :)"
-        className="min-h-fit resize-none overflow-hidden rounded-xl border-color-primary bg-chat-user"
-      />
+      <div className="flex w-full flex-col items-center gap-y-3">
+        <Label htmlFor="prompt" className="font-normal">
+          Pomóc ci wybrać promotora?
+        </Label>
+        <PromptInput />
+      </div>
     </div>
   );
 }
