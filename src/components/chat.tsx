@@ -43,7 +43,7 @@ function PromochatorLogo() {
   );
 }
 
-function PromochatorIcon({
+export function PromochatorIcon({
   imageWidth,
   imageHeight,
   imageClassName,
