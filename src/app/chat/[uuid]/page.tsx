@@ -16,5 +16,5 @@ export default function ConversationPage({}) {
     notFound();
   }
 
-  return <div>{params.uuid}</div>;
+  return <div>{JSON.parse(chat).prompt}</div>;
 }
