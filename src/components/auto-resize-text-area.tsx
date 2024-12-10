@@ -57,6 +57,7 @@ export function AutoResizeTextArea({
           setIsSubmitting(true);
           const newUuid = v4();
           //TODO adding conversation to localstorage there?
+          localStorage.setItem(newUuid, JSON.stringify({ prompt: text }));
           router.push(`/chat/${newUuid}`);
         }}
         disabled={isSubmitting}
