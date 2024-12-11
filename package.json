@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.0.4",
-    "@solvro/config": "^1.5.8",
+    "@solvro/config": "^1.8.3",
     "@types/node": "^22.10.1",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
