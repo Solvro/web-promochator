@@ -17,13 +17,13 @@ export function PromptInput() {
   const router = useRouter();
 
   return (
-    <div className="flex max-h-[200px] w-full max-w-[350px] items-center gap-x-2 rounded-lg border-2 border-color-primary bg-chat-user px-2 align-top md:max-w-[400px] lg:max-w-[500px]">
+    <div className="flex w-full max-w-[350px] items-center gap-x-2 rounded-lg border-2 border-color-primary bg-chat-user px-2 align-top md:max-w-[400px] lg:max-w-[500px]">
       <EditorProvider
         immediatelyRender={false}
         extensions={extensions}
         editorProps={{
           attributes: {
-            class: "p-2 focus:outline-none cursor-text max-h-[200px] ",
+            class: "p-2 focus:outline-none cursor-text max-h-[200px]",
           },
         }}
         editorContainerProps={{
