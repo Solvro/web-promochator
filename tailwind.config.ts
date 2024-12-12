@@ -20,6 +20,7 @@ export default {
         "chat-bot": "#1D2150",
         "chat-user": "#34386A",
         "chat-background": "#060C28",
+        "message-primary": "#5D70B8",
         "t-secondary": "#E6E7FF",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

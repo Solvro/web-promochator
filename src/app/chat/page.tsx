@@ -18,10 +18,36 @@ export default function ChatPage() {
         </div>
         <Supervisor
           name="Dr hab. Anna Nowak"
-          specialization="Specjalistka w dziedzinie UX Design i Psychologii"
-          description="Współpracowała z wieloma firmami IT, pomagając im tworzyć produkty
-          przyjazne dla użytkownika."
+          faculty="Faculty of Computer Science"
+          papers={[
+            {
+              title: "Modern Web Development Frameworks",
+              description:
+                "This paper discusses various frameworks used in modern web development, comparing their performance and usability.",
+            },
+            {
+              title: "Responsive Design Techniques",
+              description:
+                "An exploration of techniques for creating responsive web applications that work on various devices.",
+            },
+          ]}
           highlight
+        />
+        <Supervisor
+          name="Dr hab. Anna Nowak"
+          faculty="Faculty of Computer Science"
+          papers={[
+            {
+              title: "Modern Web Development Frameworks",
+              description:
+                "This paper discusses various frameworks used in modern web development, comparing their performance and usability.",
+            },
+            {
+              title: "Responsive Design Techniques",
+              description:
+                "An exploration of techniques for creating responsive web applications that work on various devices.",
+            },
+          ]}
         />
       </div>
     </div>
