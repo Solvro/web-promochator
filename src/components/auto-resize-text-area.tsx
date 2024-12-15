@@ -58,26 +58,17 @@ export function AutoResizeTextArea({
         onClick={() => {
           setIsSubmitting(true);
           const newUuid = v4();
-          // Check if chats exist in localStorage
-          if (localStorage.getItem("chats") === null) {
-            // If not, create a new array with the new chat and store it in localStorage
-            localStorage.setItem(
-              "chats",
-              JSON.stringify([
-                { uuid: newUuid, prompt: text, recommendation: {} },
-              ]),
-            );
-          } else {
-            // If chats exist in localStorage, add the new chat to the existing array
-            const chats = JSON.parse(localStorage.getItem("chats")!) as Chat[];
-            localStorage.setItem(
-              "chats",
-              JSON.stringify([
-                ...chats,
-                { uuid: newUuid, prompt: text, recommendation: {} },
-              ]),
-            );
-          }
+          const chats =
+            localStorage.getItem("chats") == null
+              ? []
+              : (JSON.parse(localStorage.getItem("chats")!) as Chat[]);
+          localStorage.setItem(
+            "chats",
+            JSON.stringify([
+              ...chats,
+              { uuid: newUuid, prompt: text, recommendation: {} },
+            ]),
+          );
           router.push(`/chat/${newUuid}`);
         }}
         disabled={isSubmitting}
