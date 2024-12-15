@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { v4 } from "uuid";
 
+import type { Chat } from "@/types/chat";
+
 import { Button } from "./ui/button";
 
 const extensions = [StarterKit];
@@ -42,7 +44,17 @@ export function PromptInput() {
         onClick={() => {
           setIsSubmitting(true);
           const newUuid = v4();
-          //TODO adding conversation to localstorage there?
+          const chats =
+            localStorage.getItem("chats") == null
+              ? []
+              : (JSON.parse(localStorage.getItem("chats")!) as Chat[]);
+          localStorage.setItem(
+            "chats",
+            JSON.stringify([
+              ...chats,
+              { uuid: newUuid, prompt, recommendation: {} },
+            ]),
+          );
           router.push(`/chat/${newUuid}`);
         }}
         disabled={isSubmitting}
