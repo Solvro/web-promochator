@@ -1,6 +1,7 @@
 "use client";
 
 import { NotebookPen, Star } from "lucide-react";
+import Link from "next/link";
 
 import { ChatSidebarLink } from "@/components/chat-sidebar/chat-sidebar-link";
 import { ChatSidebarTrigger } from "@/components/chat-sidebar/chat-sidebar-trigger";
@@ -24,9 +25,15 @@ export function ChatSidebar() {
           <Button size="icon" variant="transparent" title="Ulubione rozmowy">
             <Star size={24} />
           </Button>
-          <Button size="icon" variant="transparent" title="Utwórz nową rozmowę">
-            <NotebookPen size={24} />
-          </Button>
+          <Link href="/chat">
+            <Button
+              size="icon"
+              variant="transparent"
+              title="Utwórz nową rozmowę"
+            >
+              <NotebookPen size={24} />
+            </Button>
+          </Link>
         </div>
       </SidebarHeader>
       <SidebarContent className="p-2">
