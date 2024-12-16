@@ -25,15 +25,16 @@ export function ChatSidebar() {
           <Button size="icon" variant="transparent" title="Ulubione rozmowy">
             <Star size={24} />
           </Button>
-          <Link href="/chat">
-            <Button
-              size="icon"
-              variant="transparent"
-              title="Utwórz nową rozmowę"
-            >
+          <Button
+            size="icon"
+            variant="transparent"
+            title="Utwórz nową rozmowę"
+            asChild
+          >
+            <Link href="/chat">
               <NotebookPen size={24} />
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </div>
       </SidebarHeader>
       <SidebarContent className="p-2">
