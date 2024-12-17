@@ -9,22 +9,19 @@ import type { Chat } from "@/types/chat";
 export default function ConversationPage() {
   const parameters = useParams<{ uuid: string }>();
   const { getChat } = useChats();
-  const [chat, setChat] = useState<Chat | null | undefined>(null);
+  const [chat, setChat] = useState<Chat | null>(null);
 
   useEffect(() => {
-    const foundChat = getChat(parameters.uuid);
-    setChat(foundChat);
+    const targetChat = getChat(parameters.uuid);
+    if (targetChat === null) {
+      notFound();
+    }
+    setChat(targetChat);
 
-    //TODO call api there
+    if (!targetChat.recommendation) {
+      //TODO call api there
+    }
   }, [parameters.uuid, getChat]);
 
-  if (chat === null) {
-    return;
-  }
-
-  if (chat === undefined) {
-    notFound();
-  }
-
-  return <div>{chat.prompt}</div>;
+  return <div>{chat === null ? <div>Loading...</div> : chat.prompt}</div>;
 }
