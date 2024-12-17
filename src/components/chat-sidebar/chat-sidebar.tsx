@@ -15,8 +15,13 @@ import {
   SidebarHeader,
   SidebarMenu,
 } from "@/components/ui/sidebar";
+import type { Chat } from "@/types/chat";
 
 export function ChatSidebar() {
+  const chats =
+    localStorage.getItem("chats") == null
+      ? []
+      : (JSON.parse(localStorage.getItem("chats")!) as Chat[]);
   return (
     <Sidebar className="border-sidebar">
       <SidebarHeader className="flex-row justify-between px-4 pb-0 pt-4">
@@ -42,10 +47,13 @@ export function ChatSidebar() {
           <SidebarGroupLabel>Dzisiaj</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <ChatSidebarLink
-                href={"/chat"}
-                title={"Wpływ modernistycznego lorem ipsum"}
-              />
+              {chats.map(({ uuid, prompt }, key) => (
+                <ChatSidebarLink
+                  key={key}
+                  href={`/chat/${uuid}`}
+                  title={prompt}
+                />
+              ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
