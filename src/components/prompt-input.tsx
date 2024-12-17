@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { v4 } from "uuid";
 
+import { useChats } from "@/hooks/use-chats";
 import type { Chat } from "@/types/chat";
 
 import { Button } from "./ui/button";
@@ -17,6 +18,7 @@ export function PromptInput() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [prompt, setPrompt] = useState<string>("");
   const router = useRouter();
+  const { addChat } = useChats();
 
   return (
     <div className="flex w-full max-w-[350px] items-center gap-x-2 rounded-lg border-2 border-color-primary bg-chat-user px-2 align-top md:max-w-[400px] lg:max-w-[500px]">
@@ -44,17 +46,8 @@ export function PromptInput() {
         onClick={() => {
           setIsSubmitting(true);
           const newUuid = v4();
-          const chats =
-            localStorage.getItem("chats") == null
-              ? []
-              : (JSON.parse(localStorage.getItem("chats")!) as Chat[]);
-          localStorage.setItem(
-            "chats",
-            JSON.stringify([
-              ...chats,
-              { uuid: newUuid, prompt, recommendation: {} },
-            ]),
-          );
+          const chat: Chat = { uuid: newUuid, prompt, recommendation: [] };
+          addChat(chat);
           router.push(`/chat/${newUuid}`);
         }}
         disabled={isSubmitting}

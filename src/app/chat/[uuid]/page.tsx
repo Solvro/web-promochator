@@ -3,30 +3,27 @@
 import { notFound, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { useChats } from "@/hooks/use-chats";
 import type { Chat } from "@/types/chat";
 
 export default function ConversationPage() {
   const parameters = useParams<{ uuid: string }>();
-
-  const [chat, setChat] = useState<Chat | null>(null);
+  const { getChat } = useChats();
+  const [chat, setChat] = useState<Chat | null | undefined>(null);
 
   useEffect(() => {
-    const chats =
-      localStorage.getItem("chats") == null
-        ? []
-        : (JSON.parse(localStorage.getItem("chats")!) as Chat[]);
+    const foundChat = getChat(parameters.uuid);
+    setChat(foundChat);
 
-    const foundChat = chats.find((c) => c.uuid === parameters.uuid);
+    //TODO call api there
+  }, [parameters.uuid, getChat]);
 
-    if (foundChat) {
-      setChat(foundChat);
-    } else {
-      notFound();
-    }
-  }, [parameters.uuid]);
+  if (chat === null) {
+    return;
+  }
 
-  if (!chat) {
-    return <div>Loading...</div>;
+  if (chat === undefined) {
+    notFound();
   }
 
   return <div>{chat.prompt}</div>;
