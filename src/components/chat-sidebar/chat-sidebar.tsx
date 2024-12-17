@@ -47,9 +47,9 @@ export function ChatSidebar() {
           <SidebarGroupLabel>Dzisiaj</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {chats.map(({ uuid, prompt }, key) => (
+              {chats.map(({ uuid, prompt }) => (
                 <ChatSidebarLink
-                  key={key}
+                  key={uuid}
                   href={`/chat/${uuid}`}
                   title={prompt}
                 />
