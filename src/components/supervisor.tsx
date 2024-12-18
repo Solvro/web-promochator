@@ -22,13 +22,13 @@ export function Supervisor({
 }) {
   const [isOpen, setIsOpen] = useState(highlight ?? false);
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex w-full flex-row gap-2">
       <Button variant="transparent" size="icon">
         <Star size={24} />
       </Button>
       <div
         className={cn(
-          "inline-flex flex-col gap-4 rounded-2xl p-4",
+          "inline-flex w-full flex-col gap-4 rounded-2xl p-4",
           (highlight ?? false)
             ? "bg-message-primary"
             : "border border-message-primary bg-transparent",
