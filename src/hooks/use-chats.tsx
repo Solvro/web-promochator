@@ -1,11 +1,11 @@
+import { useAtom } from "jotai/react";
 import { useCallback } from "react";
 
+import { chatsAtom } from "@/atoms/chats";
 import type { Chat } from "@/types/chat";
 
-import { useLocalStorageState } from "./use-local-storage";
-
 export function useChats() {
-  const [chats, setChats] = useLocalStorageState<Chat[]>("chats", []);
+  const [chats, setChats] = useAtom(chatsAtom);
 
   const getChat = useCallback(
     (uuid: string) => {
