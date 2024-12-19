@@ -31,7 +31,6 @@ export default function ChatPage() {
                 "An exploration of techniques for creating responsive web applications that work on various devices.",
             },
           ]}
-          highlight
         />
         <Supervisor
           name="Dr hab. Anna Nowak"
