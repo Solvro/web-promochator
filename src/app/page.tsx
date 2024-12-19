@@ -7,14 +7,14 @@ import { Navbar } from "../components/navbar";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen justify-center bg-gradient-to-b from-[#030313] to-[#040A2E] text-white">
+    <div className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#030313] to-[#040A2E] text-white">
       <div className="container p-6">
         <Navbar />
         <HeroSection />
         <HowItWorksSection />
         <DetailsSection />
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }
