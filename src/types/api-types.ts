@@ -1,6 +1,6 @@
 import type { Supervisor } from "./supervisor";
 
-interface RawApiRecommendations {
+export interface RawApiRecommendation {
   output: {
     faculty: string;
     question: string;
@@ -21,8 +21,8 @@ interface Metadata {
   feedback_tokens: any[];
 }
 
-export type RecommendationsResponse = Omit<
-  RawApiRecommendations["output"],
+export type RecommendationResponse = Omit<
+  RawApiRecommendation["output"],
   "retrieved_docs" | "prompt" | "metadata"
 >;
 

@@ -16,8 +16,7 @@ export async function mockFetch(
   url: string,
   options: RequestInit = {},
 ): Promise<Response> {
-  // Define your mock responses
-
+  //throw new Error("ERROR APPEARAD");
   return new Promise((resolve) => {
     setTimeout(() => {
       const mockResponse = mockResponses[url];
