@@ -40,6 +40,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      jotai:
+        specifier: ^2.10.4
+        version: 2.10.4(@types/react@19.0.1)(react@19.0.0)
       lucide-react:
         specifier: ^0.460.0
         version: 0.460.0(react@19.0.0)
@@ -3193,6 +3196,21 @@ packages:
         integrity: sha512-H5UpaUI+aHOqZXlYOaFP/8AzKsg+guWu+Pr3Y8i7+Y3zr1aXAvCvTAQ1RxSc6oVD8R8c7brgNtTVP91E7upH/g==,
       }
     hasBin: true
+
+  jotai@2.10.4:
+    resolution:
+      {
+        integrity: sha512-/T4ofyMSkAybEs2OvR8S4HACa+/ASUEPLz86SUjFXJqU9RdJKLvZDJrag398suvHC5CR0+Cs4P5m/gtVcryzlw==,
+      }
+    engines: { node: ">=12.20.0" }
+    peerDependencies:
+      "@types/react": ">=17.0.0"
+      react: ">=17.0.0"
+    peerDependenciesMeta:
+      "@types/react":
+        optional: true
+      react:
+        optional: true
 
   js-tokens@4.0.0:
     resolution:
@@ -7029,6 +7047,11 @@ snapshots:
 
   jiti@2.4.0:
     optional: true
+
+  jotai@2.10.4(@types/react@19.0.1)(react@19.0.0):
+    optionalDependencies:
+      "@types/react": 19.0.1
+      react: 19.0.0
 
   js-tokens@4.0.0: {}
 
