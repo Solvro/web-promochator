@@ -20,6 +20,7 @@ export default {
         "chat-bot": "#1D2150",
         "chat-user": "#34386A",
         "chat-background": "#060C28",
+        "message-primary": "#5D70B8",
         "t-secondary": "#E6E7FF",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -76,6 +77,28 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
+        },
+        "accordion-up": {
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
