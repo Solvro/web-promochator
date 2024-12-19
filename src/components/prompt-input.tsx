@@ -46,7 +46,7 @@ export function PromptInput() {
         onClick={() => {
           setIsSubmitting(true);
           const newUuid = v4();
-          const chat: Chat = { uuid: newUuid, prompt, recommendation: [] };
+          const chat: Chat = { uuid: newUuid, prompt };
           addChat(chat);
           router.push(`/chat/${newUuid}`);
         }}

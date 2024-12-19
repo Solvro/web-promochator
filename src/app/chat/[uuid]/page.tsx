@@ -1,4 +1,5 @@
-import { ClientConversation } from "./client";
+import { ClientOnly } from "@/components/client-only";
+import { Conversation } from "@/components/conversation";
 
 export default async function ConversationPage({
   params,
@@ -6,5 +7,9 @@ export default async function ConversationPage({
   params: Promise<{ uuid: string }>;
 }) {
   const { uuid } = await params;
-  return <ClientConversation uuid={uuid} />;
+  return (
+    <ClientOnly>
+      <Conversation uuid={uuid} />
+    </ClientOnly>
+  );
 }
