@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import type { Paper } from "@/types/supervisor";
 
 import {
   Accordion,
@@ -20,10 +21,7 @@ export function Supervisor({
 }: {
   name: string;
   faculty: string;
-  papers: {
-    title: string;
-    description: string;
-  }[];
+  papers: Paper[];
 }) {
   const [open, setOpen] = useState(false);
   return (
@@ -52,8 +50,8 @@ export function Supervisor({
             </div>
           </AccordionTrigger>
           <AccordionContent className="space-y-2 p-0">
-            {papers.map(({ title, description }, key) => (
-              <div key={key} className="flex flex-col gap-1">
+            {papers.map(({ title, description }) => (
+              <div key={title} className="flex flex-col gap-1">
                 <p className="text-lg font-medium">{title}</p>
                 <p>{description}</p>
               </div>

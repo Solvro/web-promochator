@@ -1,6 +1,6 @@
 interface Paper {
   title: string;
-  descripiton: string;
+  description: string;
 }
 
 interface Supervisor {
