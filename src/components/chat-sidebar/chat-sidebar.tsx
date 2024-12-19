@@ -47,7 +47,7 @@ export function ChatSidebar() {
               {chats.map((chat) => (
                 <ChatSidebarLink
                   key={chat.uuid}
-                  href={`/chat/${chat.uuid}`}
+                  uuid={chat.uuid}
                   title={chat.prompt}
                 />
               ))}
