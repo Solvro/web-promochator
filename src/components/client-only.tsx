@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
 export function ClientOnly({
   children,
   ...delegated
 }: {
   children: ReactNode;
-}) {
+} & HTMLAttributes<HTMLDivElement>) {
   const [hasMounted, setHasMounted] = useState(false);
   useEffect(() => {
     setHasMounted(true);

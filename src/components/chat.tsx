@@ -21,8 +21,8 @@ function PromochatorLogo() {
   return (
     <div className="flex flex-col items-center gap-y-4">
       <PromochatorIcon
-        imageWidth={36}
-        imageHeight={36}
+        imageWidth={64}
+        imageHeight={64}
         imageClassName="py-2 px-1"
       />
       <span className="text-3xl">
@@ -42,7 +42,13 @@ export function PromochatorIcon({
   imageClassName?: string;
 }) {
   return (
-    <div className="flex aspect-square justify-center rounded-full border-2 border-white">
+    <div
+      className={`flex aspect-square justify-center rounded-full border-2 border-white`}
+      style={{
+        width: `${imageWidth.toString()}px`,
+        height: `${imageHeight.toString()}px`,
+      }}
+    >
       <Image
         src="/assets/logo/promochator-icon.svg"
         alt="logo Promochatora"
