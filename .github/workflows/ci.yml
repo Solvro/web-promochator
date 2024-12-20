@@ -30,5 +30,7 @@ jobs:
         if: always()
 
       - name: Build
+        env:
+          API_URL: ${{ secrets.API_URL }}
         run: pnpm run build
         if: always()
