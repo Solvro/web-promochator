@@ -31,6 +31,6 @@ jobs:
 
       - name: Build
         env:
-          API_URL: ${{ secrets.API_URL }}
+          PROMOCHATOR_API: ${{ secrets.PROMOCHATOR_API }}
         run: pnpm run build
         if: always()
