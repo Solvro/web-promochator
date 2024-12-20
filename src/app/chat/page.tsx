@@ -1,3 +1,5 @@
+import { v4 } from "uuid";
+
 import { Chat, PromochatorIcon } from "@/components/chat";
 import { Supervisor } from "@/components/supervisor";
 
@@ -17,6 +19,9 @@ export default function ChatPage() {
           </p>
         </div>
         <Supervisor
+          uuid={v4()}
+          prompt="TO JEST TYLKO MOCK POPRAW TO POZNIEJ!!!"
+          chatUuid={v4()} //MOCK!!!!! POPRAW POZNIEJ
           name="Dr hab. Anna Nowak"
           faculty="Faculty of Computer Science"
           papers={[
@@ -33,6 +38,9 @@ export default function ChatPage() {
           ]}
         />
         <Supervisor
+          uuid={v4()}
+          prompt="TO JEST TYLKO MOCK POPRAW TO POZNIEJ!!!"
+          chatUuid={v4()} //MOCK!!!!! POPRAW POZNIEJ
           name="Dr hab. Anna Nowak"
           faculty="Faculty of Computer Science"
           papers={[
