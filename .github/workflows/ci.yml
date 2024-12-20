@@ -30,5 +30,7 @@ jobs:
         if: always()
 
       - name: Build
+        env:
+          PROMOCHATOR_API: ${{ secrets.PROMOCHATOR_API }}
         run: pnpm run build
         if: always()

@@ -1,15 +1,15 @@
-"use client";
+import { ClientOnly } from "@/components/client-only";
+import { Conversation } from "@/components/conversation";
 
-import { notFound, useParams } from "next/navigation";
-
-import { useChats } from "@/hooks/use-chats";
-
-export default function ConversationPage() {
-  const parameters = useParams<{ uuid: string }>();
-  const { getChat } = useChats();
-  const chat = getChat(parameters.uuid);
-  if (chat === null) {
-    notFound();
-  }
-  return <div>{chat.prompt}</div>;
+export default async function ConversationPage({
+  params,
+}: {
+  params: Promise<{ uuid: string }>;
+}) {
+  const { uuid } = await params;
+  return (
+    <ClientOnly className="flex grow flex-col items-center justify-center overflow-y-auto">
+      <Conversation uuid={uuid} />
+    </ClientOnly>
+  );
 }
