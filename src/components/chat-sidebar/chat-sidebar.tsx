@@ -2,6 +2,7 @@
 
 import { NotebookPen, Star } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 import { ChatSidebarLink } from "@/components/chat-sidebar/chat-sidebar-link";
 import { ChatSidebarTrigger } from "@/components/chat-sidebar/chat-sidebar-trigger";
@@ -16,15 +17,53 @@ import {
   SidebarMenu,
 } from "@/components/ui/sidebar";
 import { useChats } from "@/hooks/use-chats";
+import { useSupervisors } from "@/hooks/use-supervisors";
+
+type Tab = "chats" | "supervisors";
 
 export function ChatSidebar() {
   const { chats } = useChats();
+  const { supervisors } = useSupervisors();
+  const [tab, setTab] = useState<Tab>("chats");
+  const chooseTab = () => {
+    switch (tab) {
+      case "chats": {
+        return chats.map((chat) => (
+          <ChatSidebarLink
+            key={chat.uuid}
+            href={`/chat/${chat.uuid}`}
+            title={chat.prompt}
+          />
+        ));
+      }
+
+      case "supervisors": {
+        return supervisors.map((supervisor) => (
+          <ChatSidebarLink
+            key={supervisor.uuid}
+            href={`/supervisor/${supervisor.uuid}`}
+            title={supervisor.prompt}
+          />
+        ));
+      }
+    }
+  };
+
   return (
     <Sidebar className="border-sidebar">
       <SidebarHeader className="flex-row justify-between px-4 pb-0 pt-4">
         <ChatSidebarTrigger />
         <div className="flex gap-2">
-          <Button size="icon" variant="transparent" title="Ulubione rozmowy">
+          <Button
+            size="icon"
+            variant="transparent"
+            title={tab === "chats" ? "Zapisani promotorzy" : "Czaty"}
+            onClick={() => {
+              setTab((previousTab) => {
+                return previousTab === "chats" ? "supervisors" : "chats";
+              });
+            }}
+          >
             <Star size={24} />
           </Button>
           <Button
@@ -43,15 +82,7 @@ export function ChatSidebar() {
         <SidebarGroup>
           <SidebarGroupLabel>Dzisiaj</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {chats.map((chat) => (
-                <ChatSidebarLink
-                  key={chat.uuid}
-                  href={`/chat/${chat.uuid}`}
-                  title={chat.prompt}
-                />
-              ))}
-            </SidebarMenu>
+            <SidebarMenu>{chooseTab()}</SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
