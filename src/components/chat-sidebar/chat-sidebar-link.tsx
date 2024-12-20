@@ -14,7 +14,7 @@ export function ChatSidebarLink({
     <SidebarMenuItem>
       <SidebarMenuButton asChild>
         <Link
-          href={`chats/${uuid}`}
+          href={`/chats/${uuid}`}
           className="flex flex-row items-center justify-between"
         >
           <span className="truncate">{title}</span>
@@ -24,7 +24,6 @@ export function ChatSidebarLink({
             variant="transparent"
             title="Oznacz jako ulubione"
             onClick={(event) => {
-              // Prevent link from redirecting
               event.preventDefault();
               event.stopPropagation();
               chats.removeChat(uuid);
