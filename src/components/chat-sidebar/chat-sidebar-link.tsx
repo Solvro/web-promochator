@@ -14,7 +14,7 @@ export function ChatSidebarLink({
     <SidebarMenuItem>
       <SidebarMenuButton asChild>
         <Link
-          href={`/chats/${uuid}`}
+          href={`/chat/${uuid}`}
           className="flex flex-row items-center justify-between"
         >
           <span className="truncate">{title}</span>
