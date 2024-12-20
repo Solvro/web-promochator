@@ -8,7 +8,7 @@ export default async function ConversationPage({
 }) {
   const { uuid } = await params;
   return (
-    <ClientOnly className="flex flex-col overflow-y-auto">
+    <ClientOnly className="flex grow flex-col items-center justify-center overflow-y-auto">
       <Conversation uuid={uuid} />
     </ClientOnly>
   );

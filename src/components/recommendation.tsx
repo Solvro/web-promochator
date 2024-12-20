@@ -64,7 +64,7 @@ export function Recommendation({
       </div>
       {chat.recommendation?.recommended_supervisors.map((supervisor) => (
         <Supervisor
-          key={supervisor.name}
+          key={supervisor.name} //TODO switch to uuid
           name={supervisor.name}
           faculty={supervisor.faculty}
           papers={supervisor.papers}

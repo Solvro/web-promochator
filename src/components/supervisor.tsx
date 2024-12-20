@@ -49,9 +49,9 @@ export function Supervisor({
               <p>{faculty}</p>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="space-y-2 p-0">
+          <AccordionContent className="space-y-6 p-0">
             {papers.map(({ title, description }) => (
-              <div key={title} className="flex flex-col gap-1">
+              <div key={title} className="flex max-w-lg flex-col gap-1">
                 <p className="text-lg font-medium">{title}</p>
                 <p>{description}</p>
               </div>
