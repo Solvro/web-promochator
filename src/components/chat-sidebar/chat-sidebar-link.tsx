@@ -1,31 +1,36 @@
-import { Star } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
+import { useChats } from "@/hooks/use-chats";
 
 export function ChatSidebarLink({
+  uuid,
   href,
   title,
-}: Readonly<{ href: string; title: string }>) {
+}: Readonly<{ uuid: string; href: string; title: string }>) {
+  const chats = useChats();
   return (
     <SidebarMenuItem>
       <SidebarMenuButton asChild>
-        <Link href={href}>
+        <Link
+          href={href}
+          className="flex flex-row items-center justify-between"
+        >
           <span className="truncate">{title}</span>
           <Button
             size="icon"
-            className="flex-none"
+            className="flex-none transition hover:text-red-500"
             variant="transparent"
             title="Oznacz jako ulubione"
             onClick={(event) => {
-              // Prevent link from redirecting
               event.preventDefault();
               event.stopPropagation();
-              // TODO: implement button action
+              chats.removeChat(uuid);
             }}
           >
-            <Star size={16} />
+            <Trash2 size={16} />
           </Button>
         </Link>
       </SidebarMenuButton>

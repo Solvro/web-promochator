@@ -31,6 +31,7 @@ export function ChatSidebar() {
         return chats.map((chat) => (
           <ChatSidebarLink
             key={chat.uuid}
+            uuid={chat.uuid}
             href={`/chat/${chat.uuid}`}
             title={chat.prompt}
           />
@@ -41,6 +42,7 @@ export function ChatSidebar() {
         return supervisors.map((supervisor) => (
           <ChatSidebarLink
             key={supervisor.uuid}
+            uuid={supervisor.uuid}
             href={`/supervisor/${supervisor.uuid}`}
             title={supervisor.prompt}
           />

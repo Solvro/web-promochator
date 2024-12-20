@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useSupervisors } from "@/hooks/use-supervisors";
 import { cn } from "@/lib/utils";
+import type { Paper } from "@/types/supervisor";
 
 import {
   Accordion,
@@ -27,10 +28,7 @@ export function Supervisor({
   chatUuid: string;
   name: string;
   faculty: string;
-  papers: {
-    title: string;
-    description: string;
-  }[];
+  papers: Paper[];
 }) {
   const { addSupervisor, getSupervisor, removeSupervisor } = useSupervisors();
   const [open, setOpen] = useState(false);
@@ -85,9 +83,9 @@ export function Supervisor({
               <p>{faculty}</p>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="space-y-2 p-0">
-            {papers.map(({ title, description }, key) => (
-              <div key={key} className="flex flex-col gap-1">
+          <AccordionContent className="space-y-6 p-0">
+            {papers.map(({ title, description }) => (
+              <div key={title} className="flex max-w-lg flex-col gap-1">
                 <p className="text-lg font-medium">{title}</p>
                 <p>{description}</p>
               </div>

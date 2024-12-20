@@ -1,0 +1,66 @@
+{
+  "faculty": "Faculty of Information and Communication Technology",
+  "question": "Web development",
+  "retrieved_docs": [],
+  "recommendation": {
+    "hello_message": "Here are some suitable supervisors for your thesis on web development at Politechnika Wrocławska:",
+    "recommended_supervisors": [
+      {
+        "name": "dr inż. Jakub Długosz",
+        "faculty": "Faculty of Information and Communication Technology",
+        "papers": [
+          {
+            "title": "Web services performance testing with the use of CMS and CDN systems",
+            "description": "performance europe cms focuses displayed metrics heavy stability potential generally contributing key better demonstrated websites interestingly point vercel 10 layout examining presents pages user united states also generator underlying making suggest hosting website site anomaly spanned robustness across shift contributes insights observations understand owners disparities analysis informed thesis byte uncovers platforms collected exhibited indicating regions regional three events differences results however domain decisions study occurrences future may groundwork research variations architecture choosing comprehensive cloudflare data popular created jamstack subtle index lays speed need time assist service first comparable static experience cls approximately two valuable factors cumulative outperforming using basic complex ttfb asia lighthouse findings platform dynamics"
+          }
+        ]
+      },
+      {
+        "name": "dr inż. Anna Lauks-Dutka",
+        "faculty": "Faculty of Information and Communication Technology",
+        "papers": [
+          {
+            "title": "A web application supporting the work of tutors",
+            "description": "web document describes framework the~technologies chosen software functional interface non-functional discussed justifies selected tutors presented project application developed requirements potential process install django based responsive provides issue analysis description attractiveness support fragments creating relation work development aspects system implementation design selection increase user includes paths business"
+          },
+          {
+            "title": "Web application supporting personnel management in projects",
+            "description": "problem incorporated skills optimal purpose ought furthermore offer management additionally type users weighted obtain paper five exact functionalities implemented tested project auction sense design assists successive result algorithms tries based one answer algorithm hungarian reasonable best matching assignment shortest time web maximum software relaxation cycle-cancelling implement application size basic solve still tasks network paths"
+          },
+          {
+            "title": "Using a voice assistant to communicate with a service analyzing data from the application for controlling the hydroponic systems",
+            "description": "easier skill version designed provided serverless hydroponics framework states used customer interface implemented source two technologies implement app make bsc application using cloud purpose access alexa 3.9 aws extension invoked thesis controlling assistant systems relays every python data modern task aspects system platform design voice involved measurements code ran time includes lambda"
+          }
+        ]
+      },
+      {
+        "name": "dr inż. Marek Kopel",
+        "faculty": "Faculty of Information and Communication Technology",
+        "papers": [
+          {
+            "title": "Responsive web design: testing usability of mobile web applications",
+            "description": "developing usability various small proportions prospective tests problem tools developed employed paradigms approach web patterns results great smartphones utilization devices sizes dynamically implemented using mobile different goal responsive thoroughly test formulated designing monitors applications two management screen users obtained inspections including application paper design number versions adapting techniques desktop conference recommendations ranging automated scientific rwd well large allows individual analysed orientations diverse experts"
+          },
+          {
+            "title": "Automatic web-based user interface delivery for soa-based systems",
+            "description": "ontology-based flexible up-to-date web-based consequence usually sophisticated semi-automatically soa input output functionalities parameters today defines services methodologies authoring great corresponding interface systems implemented programmers service method enhanced building user software present based generation ontology character presented delivered oriented set paper design however automatic description interfaces need manually interactive designers paradigm implementation interoperable"
+          }
+        ]
+      },
+      {
+        "name": "dr inż. Sławomir Sambor",
+        "faculty": "Faculty of Information and Communication Technology",
+        "papers": [
+          {
+            "title": "Project of a logic analyzer based on the Nucleo STM32.",
+            "description": "develop main summary solutions functional beginning conducted end presented realized application project next process using purpose stm32 control analyzer thesis logic 8-channel development conclusions drew tests analyzers part microcontroller assumptions implementation design existing computer described market"
+          },
+          {
+            "title": "Design of a secure computer network with Wi-Fi access in a three-story office building.",
+            "description": "switch hiding moment port-security proper within used internet unauthorized outside someone ssid connection project terms provide create persons floor latest wi-fi access one encryption password three-storey company office communication router devices building located work cases wanted connectivity best connect wireless secure aim computer network ensure gateway mobile"
+          }
+        ]
+      }
+    ]
+  }
+}
