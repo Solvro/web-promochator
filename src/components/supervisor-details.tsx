@@ -7,9 +7,9 @@ import { notFound } from "next/navigation";
 import { useChats } from "@/hooks/use-chats";
 import { useSupervisors } from "@/hooks/use-supervisors";
 import { faculties } from "@/lib/faculties";
-import type { Supervisor } from "@/types/supervisor";
+import type { Paper } from "@/types/supervisor";
 
-function PaperEntry({ paper }: { paper: Supervisor["papers"][0] }) {
+function PaperEntry({ paper }: { paper: Paper }) {
   return (
     <div className="min-w-80 flex-1 space-y-6 rounded-lg border border-paper-entry p-4">
       <h2 className="text-xl font-medium">{paper.title}</h2>
