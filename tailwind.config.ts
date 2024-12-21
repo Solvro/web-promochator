@@ -22,6 +22,7 @@ export default {
         "chat-background": "#060C28",
         "message-primary": "#5D70B8",
         "t-secondary": "#E6E7FF",
+        "paper-entry": "#34386A",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
