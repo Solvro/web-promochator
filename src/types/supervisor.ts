@@ -3,11 +3,14 @@ interface Paper {
   description: string;
 }
 
-interface Supervisor {
-  uuid: string;
+interface SupervisorResponse {
   name: string;
   faculty: string;
   papers: Paper[];
+}
+
+interface Supervisor extends SupervisorResponse {
+  uuid: string;
 }
 
 interface SavedSupervisor extends Supervisor {
@@ -15,4 +18,4 @@ interface SavedSupervisor extends Supervisor {
   chatUuid: string;
 }
 
-export type { Paper, Supervisor, SavedSupervisor };
+export type { Paper, SupervisorResponse, Supervisor, SavedSupervisor };

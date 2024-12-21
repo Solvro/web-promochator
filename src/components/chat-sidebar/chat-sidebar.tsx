@@ -19,32 +19,35 @@ import {
 import { useChats } from "@/hooks/use-chats";
 import { useSupervisors } from "@/hooks/use-supervisors";
 
-type Tab = "chats" | "supervisors";
+import { SupervisorSidebarLink } from "./supervisor-sidebar-link";
+
+export type Tab = "chats" | "supervisors";
 
 export function ChatSidebar() {
-  const { chats } = useChats();
-  const { supervisors } = useSupervisors();
+  const { chats, removeChat } = useChats();
+  const { supervisors, removeSupervisor } = useSupervisors();
   const [tab, setTab] = useState<Tab>("chats");
-  const chooseTab = () => {
+  const switchTab = () => {
     switch (tab) {
       case "chats": {
         return chats.map((chat) => (
           <ChatSidebarLink
             key={chat.uuid}
             uuid={chat.uuid}
-            href={`/chat/${chat.uuid}`}
             title={chat.prompt}
+            removeChat={removeChat}
           />
         ));
       }
 
       case "supervisors": {
         return supervisors.map((supervisor) => (
-          <ChatSidebarLink
+          <SupervisorSidebarLink
             key={supervisor.uuid}
             uuid={supervisor.uuid}
-            href={`/supervisor/${supervisor.uuid}`}
-            title={supervisor.prompt}
+            name={supervisor.name}
+            prompt={supervisor.prompt}
+            removeSupervisor={removeSupervisor}
           />
         ));
       }
@@ -65,13 +68,19 @@ export function ChatSidebar() {
                 return previousTab === "chats" ? "supervisors" : "chats";
               });
             }}
+            className="hover:bg-sidebar-accent"
           >
-            <Star size={24} />
+            <Star
+              size={24}
+              fill={tab === "supervisors" ? "#F7B900" : ""}
+              color={tab === "supervisors" ? "#F7B900" : "currentColor"}
+            />
           </Button>
           <Button
             size="icon"
             variant="transparent"
             title="Utwórz nową rozmowę"
+            className="hover:bg-sidebar-accent"
             asChild
           >
             <Link href="/chat">
@@ -82,9 +91,11 @@ export function ChatSidebar() {
       </SidebarHeader>
       <SidebarContent className="p-2">
         <SidebarGroup>
-          <SidebarGroupLabel>Dzisiaj</SidebarGroupLabel>
+          <SidebarGroupLabel className="mb-2 text-2xl font-semibold">
+            {tab === "chats" ? "Czaty" : "Promotorzy"}
+          </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>{chooseTab()}</SidebarMenu>
+            <SidebarMenu>{switchTab()}</SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useSupervisors } from "@/hooks/use-supervisors";
 import { cn } from "@/lib/utils";
-import type { Paper } from "@/types/supervisor";
+import type { Supervisor as ISupervisor } from "@/types/supervisor";
 
 import {
   Accordion,
@@ -16,19 +16,13 @@ import {
 } from "./ui/accordion";
 
 export function Supervisor({
-  uuid,
-  prompt,
+  supervisor: { uuid, faculty, name, papers },
   chatUuid,
-  name,
-  faculty,
-  papers,
+  prompt,
 }: {
-  uuid: string;
-  prompt: string;
+  supervisor: ISupervisor;
   chatUuid: string;
-  name: string;
-  faculty: string;
-  papers: Paper[];
+  prompt: string;
 }) {
   const { addSupervisor, getSupervisor, removeSupervisor } = useSupervisors();
   const [open, setOpen] = useState(false);

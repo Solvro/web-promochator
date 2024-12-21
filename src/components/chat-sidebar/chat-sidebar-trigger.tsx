@@ -13,6 +13,7 @@ export function ChatSidebarTrigger() {
       size="icon"
       variant="transparent"
       title="Zamknij panel boczny"
+      className="hover:bg-sidebar-accent"
     >
       <X size={24} />
     </Button>

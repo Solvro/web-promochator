@@ -1,4 +1,4 @@
-import type { Supervisor } from "./supervisor";
+import type { SupervisorResponse } from "./supervisor";
 
 export interface RawApiRecommendation {
   output: {
@@ -13,7 +13,7 @@ export interface RawApiRecommendation {
 
 export interface Recommendation {
   hello_message: string;
-  recommended_supervisors: Supervisor[];
+  recommended_supervisors: SupervisorResponse[];
 }
 
 interface Metadata {
