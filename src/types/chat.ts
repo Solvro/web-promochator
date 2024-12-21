@@ -1,7 +1,8 @@
-import type { Recommendation } from "./api-types";
+import type { Supervisor } from "./supervisor";
 
 export interface Chat {
   uuid: string;
   prompt: string;
-  recommendation?: Recommendation;
+  helloMessage?: string;
+  supervisors?: Supervisor[];
 }

@@ -1,8 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
+import { v4 } from "uuid";
 
 import { mockFetch } from "@/lib/mock-fetch";
 import type { RecommendationResponse } from "@/types/api-types";
 import type { Chat } from "@/types/chat";
+import type { Supervisor as ISupervisor } from "@/types/supervisor";
 
 import { PromochatorIcon } from "./chat";
 import { Supervisor } from "./supervisor";
@@ -23,10 +25,17 @@ function useRecommendationQuery(
       // });
 
       const data = (await response.json()) as RecommendationResponse;
-      updateChat(chat.uuid, { recommendation: data.recommendation });
+      const supervisorsWithUuid =
+        data.recommendation.recommended_supervisors.map((s) => {
+          return { ...s, uuid: v4() } as ISupervisor;
+        });
+      updateChat(chat.uuid, {
+        helloMessage: data.recommendation.hello_message,
+        supervisors: supervisorsWithUuid,
+      });
       return data;
     },
-    enabled: !chat.recommendation,
+    enabled: chat.helloMessage === undefined,
     retry: false,
   });
 }
@@ -59,15 +68,15 @@ export function Recommendation({
           imageClassName="py-2 px-1"
         />
         <p className="rounded-2xl bg-message-primary px-4 py-3">
-          {chat.recommendation?.hello_message}
+          {chat.helloMessage}
         </p>
       </div>
-      {chat.recommendation?.recommended_supervisors.map((supervisor) => (
+      {chat.supervisors?.map((supervisor) => (
         <Supervisor
-          key={supervisor.name} //TODO switch to uuid
-          name={supervisor.name}
-          faculty={supervisor.faculty}
-          papers={supervisor.papers}
+          key={supervisor.uuid}
+          supervisor={supervisor}
+          prompt={chat.prompt}
+          chatUuid={chat.uuid}
         />
       ))}
     </div>

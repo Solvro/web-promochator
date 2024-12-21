@@ -4,24 +4,28 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 
-export function ChatSidebarLink({
+export function SupervisorSidebarLink({
   uuid,
-  title,
-  removeChat,
+  name,
+  prompt,
+  removeSupervisor,
 }: Readonly<{
   uuid: string;
-  title: string;
-  removeChat: (_uuid: string) => void;
+  name: string;
+  prompt: string;
+  removeSupervisor: (_uuid: string) => void;
 }>) {
   return (
-    <SidebarMenuItem>
+    <SidebarMenuItem className="rounded-md border-2 border-sidebar-accent">
       <SidebarMenuButton asChild>
         <Link
-          href={`/chat/${uuid}`}
-          className="flex flex-row items-center justify-between"
+          href={`/supervisor/${uuid}`}
+          className="flex h-fit flex-row items-center justify-between"
         >
-          <span className="truncate">{title}</span>
-
+          <div className="flex flex-col truncate">
+            <span className="truncate font-semibold">{name}</span>
+            <span className="truncate">{prompt}</span>
+          </div>
           <Button
             size="icon"
             className="flex-none transition hover:text-red-500"
@@ -30,7 +34,7 @@ export function ChatSidebarLink({
             onClick={(event) => {
               event.preventDefault();
               event.stopPropagation();
-              removeChat(uuid);
+              removeSupervisor(uuid);
             }}
           >
             <Trash2 size={16} />

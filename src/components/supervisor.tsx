@@ -4,8 +4,9 @@ import { Star } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { useSupervisors } from "@/hooks/use-supervisors";
 import { cn } from "@/lib/utils";
-import type { Paper } from "@/types/supervisor";
+import type { Supervisor as ISupervisor } from "@/types/supervisor";
 
 import {
   Accordion,
@@ -15,19 +16,46 @@ import {
 } from "./ui/accordion";
 
 export function Supervisor({
-  name,
-  faculty,
-  papers,
+  supervisor: { uuid, faculty, name, papers },
+  chatUuid,
+  prompt,
 }: {
-  name: string;
-  faculty: string;
-  papers: Paper[];
+  supervisor: ISupervisor;
+  chatUuid: string;
+  prompt: string;
 }) {
+  const { addSupervisor, getSupervisor, removeSupervisor } = useSupervisors();
   const [open, setOpen] = useState(false);
+  const isSaved = getSupervisor(uuid) !== null;
+
   return (
     <div className="flex w-full flex-row gap-2">
-      <Button variant="transparent" size="icon">
-        <Star size={24} />
+      <Button
+        variant="transparent"
+        size="icon"
+        title={isSaved ? "Usuń" : "Zapisz"}
+        onClick={
+          isSaved
+            ? () => {
+                removeSupervisor(uuid);
+              }
+            : () => {
+                addSupervisor({
+                  uuid,
+                  faculty,
+                  name,
+                  papers,
+                  prompt,
+                  chatUuid,
+                });
+              }
+        }
+      >
+        <Star
+          fill={isSaved ? "#F7B900" : ""}
+          color={isSaved ? "#F7B900" : "currentColor"}
+          size={24}
+        />
       </Button>
       <Accordion
         type="single"
