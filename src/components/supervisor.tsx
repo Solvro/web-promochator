@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { useSupervisors } from "@/hooks/use-supervisors";
+import { faculties } from "@/lib/faculties";
 import { cn } from "@/lib/utils";
 import type { Supervisor as ISupervisor } from "@/types/supervisor";
 
@@ -73,7 +74,7 @@ export function Supervisor({
           >
             <div className="flex flex-col gap-1">
               <p className="text-xl font-bold">{name}</p>
-              <p>{faculty}</p>
+              <p>{faculties[faculty] || "Nieznany wydział"}</p>
             </div>
           </AccordionTrigger>
           <AccordionContent className="space-y-6 p-0">
