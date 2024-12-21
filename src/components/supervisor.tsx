@@ -26,7 +26,8 @@ export function Supervisor({
 }) {
   const { addSupervisor, getSupervisor, removeSupervisor } = useSupervisors();
   const [open, setOpen] = useState(false);
-  const [isSaved, setIsSaved] = useState(() => getSupervisor(uuid) !== null);
+  const isSaved = getSupervisor(uuid) !== null;
+
   return (
     <div className="flex w-full flex-row gap-2">
       <Button
@@ -36,7 +37,6 @@ export function Supervisor({
           isSaved
             ? () => {
                 removeSupervisor(uuid);
-                setIsSaved(false);
               }
             : () => {
                 addSupervisor({
@@ -47,7 +47,6 @@ export function Supervisor({
                   prompt,
                   chatUuid,
                 });
-                setIsSaved(true);
               }
         }
       >
