@@ -33,6 +33,7 @@ export function Supervisor({
       <Button
         variant="transparent"
         size="icon"
+        title={isSaved ? "Usuń" : "Zapisz"}
         onClick={
           isSaved
             ? () => {

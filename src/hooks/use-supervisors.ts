@@ -5,7 +5,7 @@ import { supervisorsAtom } from "@/atoms/supervisors";
 import type { SavedSupervisor } from "@/types/supervisor";
 
 export function useSupervisors() {
-  const [supervisors, setSupervsiors] = useAtom(supervisorsAtom);
+  const [supervisors, setSupervisors] = useAtom(supervisorsAtom);
 
   const getSupervisor = useCallback(
     (uuid: string) => {
@@ -16,21 +16,21 @@ export function useSupervisors() {
 
   const addSupervisor = useCallback(
     (supervisor: SavedSupervisor) => {
-      setSupervsiors((previousSupervisors) => [
+      setSupervisors((previousSupervisors) => [
         ...previousSupervisors,
         supervisor,
       ]);
     },
-    [setSupervsiors],
+    [setSupervisors],
   );
 
   const removeSupervisor = useCallback(
     (uuid: string) => {
-      setSupervsiors((previousSupervisors) =>
+      setSupervisors((previousSupervisors) =>
         previousSupervisors.filter((s) => s.uuid !== uuid),
       );
     },
-    [setSupervsiors],
+    [setSupervisors],
   );
 
   return { supervisors, getSupervisor, addSupervisor, removeSupervisor };
