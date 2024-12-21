@@ -1,9 +1,17 @@
-export default async function Page({
+import { ClientOnly } from "@/components/client-only";
+import { SupervisorDetails } from "@/components/supervisor-details";
+
+export default async function SupervisorPage({
   params,
 }: {
   params: Promise<{ uuid: string }>;
 }) {
   const { uuid } = await params;
-  //TODO if chat is removed from local storage then display info about this instead of link to the chat
-  return <div>Saved supervisor there {uuid}</div>;
+  return (
+    <div className="flex grow items-center justify-center">
+      <ClientOnly className="flex w-full max-w-3xl flex-col gap-8 p-4">
+        <SupervisorDetails uuid={uuid} />
+      </ClientOnly>
+    </div>
+  );
 }
