@@ -6,7 +6,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useSupervisors } from "@/hooks/use-supervisors";
 import { faculties } from "@/lib/faculties";
-
 import { cn } from "@/lib/utils";
 import type { Supervisor as ISupervisor } from "@/types/supervisor";
 
