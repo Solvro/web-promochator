@@ -1,0 +1,7 @@
+{
+  "name": "PromoCHATor",
+  "short_name": "PromoCHATor",
+  "theme_color": "#060C28",
+  "background_color": "#060C28",
+  "display": "standalone"
+}
