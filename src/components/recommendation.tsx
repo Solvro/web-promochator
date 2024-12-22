@@ -59,10 +59,14 @@ export function Recommendation({
     const interval = setInterval(() => {
       setLoadingMessage(getRandomMessage());
     }, intervalDuration);
+
+    if (!isLoading) {
+      clearInterval(interval);
+    }
     return () => {
       clearInterval(interval);
     };
-  }, [loadingMessage]);
+  }, [isLoading, loadingMessage]);
 
   return (
     <div className="w-full max-w-7xl space-y-4 p-8">
@@ -87,8 +91,9 @@ export function Recommendation({
         <div className="flex gap-x-4 text-red-300">
           <CircleX size={32}></CircleX>
           <span className="w-4/5">
-            Wystąpił błąd przy pobieraniu rekomendacji. <br></br>Spróbuj
-            ponownie później.
+            Wystąpił błąd przy pobieraniu rekomendacji.
+            <br />
+            Spróbuj ponownie później.
           </span>
         </div>
       ) : (

@@ -18,7 +18,6 @@ export async function mockFetch(
 ): Promise<Response> {
   return new Promise((resolve) => {
     setTimeout(() => {
-      //rej (new Error("ERROR APPEARAD"));
       const mockResponse = mockResponses[url];
       const response = {
         ok: mockResponse.status === 200,
