@@ -87,7 +87,8 @@ export function Recommendation({
           />
           <span className="w-full">{loadingMessage}</span>
         </div>
-      ) : error ? (
+      ) : //eslint-disable-next-line unicorn/no-negated-condition
+      error !== null ? (
         <div className="flex gap-x-4 text-red-300">
           <CircleX size={32}></CircleX>
           <span className="w-4/5">
