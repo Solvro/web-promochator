@@ -4,7 +4,7 @@ export interface RawApiRecommendation {
   output: {
     faculty: string;
     question: string;
-    retrieved_docs: any[];
+    retrieved_docs: string[];
     prompt: string;
     recommendation: Recommendation;
   };
@@ -18,7 +18,7 @@ export interface Recommendation {
 
 interface Metadata {
   run_id: string;
-  feedback_tokens: any[];
+  feedback_tokens: string[];
 }
 
 export type RecommendationResponse = Omit<
