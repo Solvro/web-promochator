@@ -2,6 +2,7 @@
 
 import { NotebookPen, Star } from "lucide-react";
 import Link from "next/link";
+import { useParams, usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { ChatSidebarLink } from "@/components/chat-sidebar/chat-sidebar-link";
@@ -24,6 +25,13 @@ import { SupervisorSidebarLink } from "./supervisor-sidebar-link";
 export type Tab = "chats" | "supervisors";
 
 export function ChatSidebar() {
+  const pathname = usePathname();
+  const { uuid: currentUuid } = useParams<{ uuid: string | undefined }>();
+  const { chatUuid, supervisorUuid } = pathname.includes("chat")
+    ? { chatUuid: currentUuid, supervisorUuid: undefined }
+    : { chatUuid: undefined, supervisorUuid: currentUuid };
+  console.log(`CHAT UUID = ${chatUuid ?? ""}`);
+  console.log(`SUPERVISOR UUID = ${supervisorUuid ?? ""}`);
   const { chats, removeChat } = useChats();
   const { supervisors, removeSupervisor } = useSupervisors();
   const [tab, setTab] = useState<Tab>("chats");
@@ -36,6 +44,7 @@ export function ChatSidebar() {
             uuid={chat.uuid}
             title={chat.prompt}
             removeChat={removeChat}
+            toRedirect={currentUuid === chat.uuid}
           />
         ));
       }
