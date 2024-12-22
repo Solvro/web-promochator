@@ -16,7 +16,6 @@ export async function mockFetch(
   url: string,
   options: RequestInit = {},
 ): Promise<Response> {
-  //throw new Error("ERROR APPEARAD");
   return new Promise((resolve) => {
     setTimeout(() => {
       const mockResponse = mockResponses[url];
@@ -31,6 +30,6 @@ export async function mockFetch(
       } as Response;
 
       resolve(response);
-    }, 1000);
+    }, 10_000);
   });
 }
