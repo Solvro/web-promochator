@@ -91,6 +91,7 @@ export default function RootLayout({
           <Script
             src="https://analytics.solvro.pl/script.js"
             data-website-id="88ac5040-01fa-43fb-9b6d-18315f691419"
+            data-domains="promochator.solvro.pl"
           />
         </Providers>
       </body>
