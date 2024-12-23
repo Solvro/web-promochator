@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import Script from "next/script";
 
 import { Providers } from "@/components/providers";
 
@@ -84,8 +85,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl" className={poppins.className}>
-      <body className="bg-chat-background">
-        <Providers>{children}</Providers>
+      <body>
+        <Providers>
+          {children}
+          <Script
+            src="https://analytics.solvro.pl/script.js"
+            async={true}
+            data-website-id="88ac5040-01fa-43fb-9b6d-18315f691419"
+            data-domains="promochator.solvro.pl"
+          />
+        </Providers>
       </body>
     </html>
   );
