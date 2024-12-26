@@ -7,6 +7,9 @@ settings:
 importers:
   .:
     dependencies:
+      "@hookform/resolvers":
+        specifier: ^3.9.1
+        version: 3.9.1(react-hook-form@7.54.2(react@19.0.0))
       "@radix-ui/react-accordion":
         specifier: ^1.2.2
         version: 1.2.2(@types/react-dom@19.0.1)(@types/react@19.0.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -58,6 +61,9 @@ importers:
       react-dom:
         specifier: 19.0.0
         version: 19.0.0(react@19.0.0)
+      react-hook-form:
+        specifier: ^7.54.2
+        version: 7.54.2(react@19.0.0)
       tailwind-merge:
         specifier: ^2.5.4
         version: 2.5.4
@@ -67,6 +73,9 @@ importers:
       uuid:
         specifier: ^11.0.3
         version: 11.0.3
+      zod:
+        specifier: ^3.24.1
+        version: 3.24.1
     devDependencies:
       "@next/eslint-plugin-next":
         specifier: ^15.0.4
@@ -329,6 +338,14 @@ packages:
       {
         integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==,
       }
+
+  "@hookform/resolvers@3.9.1":
+    resolution:
+      {
+        integrity: sha512-ud2HqmGBM0P0IABqoskKWI6PEf6ZDDBZkFqe2Vnl+mTHCEHzr3ISjjZyCwTjC/qpL25JC9aIDkloQejvMeq0ug==,
+      }
+    peerDependencies:
+      react-hook-form: ^7.0.0
 
   "@humanfs/core@0.19.1":
     resolution:
@@ -4287,6 +4304,15 @@ packages:
     peerDependencies:
       react: ^19.0.0
 
+  react-hook-form@7.54.2:
+    resolution:
+      {
+        integrity: sha512-eHpAUgUjWbZocoQYUHposymRb4ZP6d0uwUnooL2uOybA9/3tPUvoAKqEWK1WaSiTxxOfTpffNZP7QwlnM3/gEg==,
+      }
+    engines: { node: ">=18.0.0" }
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+
   react-is@16.13.1:
     resolution:
       {
@@ -5149,6 +5175,12 @@ packages:
       }
     engines: { node: ">=18" }
 
+  zod@3.24.1:
+    resolution:
+      {
+        integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==,
+      }
+
 snapshots:
   "@adonisjs/eslint-config@2.0.0-beta.7(eslint@9.16.0(jiti@2.4.0))(prettier@3.4.2)(typescript@5.7.2)":
     dependencies:
@@ -5315,6 +5347,10 @@ snapshots:
       react-dom: 19.0.0(react@19.0.0)
 
   "@floating-ui/utils@0.2.8": {}
+
+  "@hookform/resolvers@3.9.1(react-hook-form@7.54.2(react@19.0.0))":
+    dependencies:
+      react-hook-form: 7.54.2(react@19.0.0)
 
   "@humanfs/core@0.19.1": {}
 
@@ -7851,6 +7887,10 @@ snapshots:
       react: 19.0.0
       scheduler: 0.25.0
 
+  react-hook-form@7.54.2(react@19.0.0):
+    dependencies:
+      react: 19.0.0
+
   react-is@16.13.1: {}
 
   react-remove-scroll-bar@2.3.6(@types/react@19.0.1)(react@19.0.0):
@@ -8450,3 +8490,5 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yoctocolors@2.1.1: {}
+
+  zod@3.24.1: {}
