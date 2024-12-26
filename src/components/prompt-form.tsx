@@ -6,19 +6,28 @@ import { StarterKit } from "@tiptap/starter-kit";
 import { ArrowUp } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { v4 } from "uuid";
 import { z } from "zod";
 
 import { useChats } from "@/hooks/use-chats";
+import { faculties } from "@/lib/faculties";
 import type { Chat } from "@/types/chat";
 
 import { Button } from "./ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 const extensions = [StarterKit];
 
 const formSchema = z.object({
-  content: z.string().min(1, "test"),
+  prompt: z.string().min(1),
+  faculty: z.string(),
 });
 
 export function PromptForm() {
@@ -29,16 +38,17 @@ export function PromptForm() {
   const {
     handleSubmit,
     setValue,
-    register,
     getValues,
+    control,
     formState: { isSubmitting },
   } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
 
   const onSubmit = () => {
+    const { prompt, faculty } = getValues();
     const newUuid = v4();
-    const chat: Chat = { uuid: newUuid, prompt: getValues("content") };
+    const chat: Chat = { uuid: newUuid, prompt: prompt, faculty: faculty };
     addChat(chat);
     router.push(`/chat/${newUuid}`);
   };
@@ -47,41 +57,68 @@ export function PromptForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       ref={formRef}
-      className="flex w-full max-w-[350px] items-center gap-x-2 rounded-lg border-2 border-color-primary bg-chat-user px-2 align-top md:max-w-[400px] lg:max-w-[500px]"
+      className="flex w-full max-w-[350px] flex-col rounded-lg border-2 border-color-primary bg-chat-user p-2 md:max-w-[400px] lg:max-w-[500px]"
     >
-      <EditorProvider
-        immediatelyRender={false}
-        extensions={extensions}
-        editorProps={{
-          attributes: {
-            class: "p-2 focus:outline-none cursor-text max-h-[200px]",
-          },
-          handleKeyDown: (_, event) => {
-            if (event.key === "Enter" && !event.shiftKey) {
-              formRef.current?.requestSubmit();
-              return true;
-            }
-          },
-          ...register("content"),
-        }}
-        editorContainerProps={{
-          className: "w-full overflow-y-auto",
-        }}
-        content={getValues("content")}
-        onUpdate={({ editor }) => {
-          setValue("content", editor.getText());
-        }}
-      />
-
-      <Button
-        variant="transparent"
-        className="aspect-square size-8 rounded-full bg-chat-background"
-        size="icon"
-        type="submit"
-        disabled={isSubmitting}
-      >
-        <ArrowUp size={20}></ArrowUp>
-      </Button>
+      <div className="min-h-10">
+        <EditorProvider
+          immediatelyRender={false}
+          extensions={extensions}
+          editorProps={{
+            attributes: {
+              class: "pb-4 focus:outline-none cursor-text max-h-[200px]",
+            },
+            handleKeyDown: (_, event) => {
+              if (event.key === "Enter" && !event.shiftKey) {
+                formRef.current?.requestSubmit();
+                return true;
+              }
+            },
+          }}
+          editorContainerProps={{
+            className: "w-full overflow-y-auto",
+          }}
+          content={getValues("prompt")}
+          onUpdate={({ editor }) => {
+            setValue("prompt", editor.getText());
+          }}
+        />
+      </div>
+      <div className="flex w-full items-center justify-between">
+        <Controller
+          name="faculty"
+          control={control}
+          render={({ field }) => (
+            <Select
+              onValueChange={field.onChange}
+              value={field.value}
+              defaultValue=" "
+            >
+              <SelectTrigger className="max-w-48">
+                <p className="truncate">
+                  <SelectValue placeholder="Wybierz wydział" />
+                </p>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value=" ">Dowolny wydział</SelectItem>
+                {Object.keys(faculties).map((faculty) => (
+                  <SelectItem key={faculty} value={faculty}>
+                    {faculties[faculty]}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+        />
+        <Button
+          variant="transparent"
+          className="aspect-square size-8 rounded-full bg-chat-background"
+          size="icon"
+          type="submit"
+          disabled={isSubmitting}
+        >
+          <ArrowUp size={20}></ArrowUp>
+        </Button>
+      </div>
     </form>
   );
 }
