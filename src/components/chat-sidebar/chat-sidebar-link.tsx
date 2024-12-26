@@ -1,3 +1,5 @@
+"use client";
+
 import { Trash2 } from "lucide-react";
 import Link from "next/link";
 
@@ -21,7 +23,6 @@ export function ChatSidebarLink({
           className="flex flex-row items-center justify-between"
         >
           <span className="truncate">{title}</span>
-
           <Button
             size="icon"
             className="flex-none transition hover:text-red-500"

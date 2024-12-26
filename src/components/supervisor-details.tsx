@@ -2,7 +2,8 @@
 
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 import { useChats } from "@/hooks/use-chats";
 import { useSupervisors } from "@/hooks/use-supervisors";
@@ -23,12 +24,15 @@ function SupervisorDetails({ uuid }: { uuid: string }) {
   const { getChat } = useChats();
   const supervisor = getSupervisor(uuid);
   const chat = getChat(supervisor?.chatUuid ?? "");
+  const router = useRouter();
 
-  if (supervisor === null) {
-    notFound();
-  }
+  useEffect(() => {
+    if (supervisor === null) {
+      router.replace("/chat");
+    }
+  }, [supervisor, router]);
 
-  return (
+  return supervisor === null ? null : (
     <>
       <div className="text-sm">
         {chat === null ? (
