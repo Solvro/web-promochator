@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { PromptInput } from "./prompt-input";
+import { PromptForm } from "./prompt-form";
 import { Label } from "./ui/label";
 
 export function Chat() {
@@ -11,7 +11,7 @@ export function Chat() {
         <Label htmlFor="prompt" className="font-normal">
           Pomóc ci wybrać promotora?
         </Label>
-        <PromptInput />
+        <PromptForm />
       </div>
     </div>
   );
