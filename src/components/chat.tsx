@@ -1,16 +1,13 @@
 import Image from "next/image";
 
 import { PromptForm } from "./prompt-form";
-import { Label } from "./ui/label";
 
 export function Chat() {
   return (
     <div className="flex w-full flex-col items-center gap-y-8 align-middle text-t-secondary">
       <PromochatorLogo />
       <div className="flex w-full flex-col items-center gap-y-3">
-        <Label htmlFor="prompt" className="font-normal">
-          Pomóc ci wybrać promotora?
-        </Label>
+        <p className="text-lg">Pomóc wybrać Ci promotora?</p>
         <PromptForm />
       </div>
     </div>
