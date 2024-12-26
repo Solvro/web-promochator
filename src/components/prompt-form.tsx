@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import Placeholder from "@tiptap/extension-placeholder";
+import { Placeholder } from "@tiptap/extension-placeholder";
 import { EditorProvider } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
 import { ArrowUp } from "lucide-react";
@@ -53,10 +53,10 @@ export function PromptForm() {
 
   const onSubmit = () => {
     const { prompt, faculty } = getValues();
-    const newUuid = v4();
-    const chat: Chat = { uuid: newUuid, prompt: prompt, faculty: faculty };
+    const uuid = v4();
+    const chat: Chat = { uuid, prompt, faculty };
     addChat(chat);
-    router.push(`/chat/${newUuid}`);
+    router.push(`/chat/${uuid}`);
   };
 
   return (
