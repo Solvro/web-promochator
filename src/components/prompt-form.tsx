@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import Placeholder from "@tiptap/extension-placeholder";
 import { EditorProvider } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
 import { ArrowUp } from "lucide-react";
@@ -23,7 +24,12 @@ import {
   SelectValue,
 } from "./ui/select";
 
-const extensions = [StarterKit];
+const extensions = [
+  StarterKit,
+  Placeholder.configure({
+    placeholder: "Wpisz temat lub opis swojej pracy...",
+  }),
+];
 
 const formSchema = z.object({
   prompt: z.string().min(1),

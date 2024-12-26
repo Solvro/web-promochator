@@ -34,6 +34,9 @@ importers:
       "@tanstack/react-query":
         specifier: ^5.62.8
         version: 5.62.8(react@19.0.0)
+      "@tiptap/extension-placeholder":
+        specifier: ^2.10.4
+        version: 2.10.4(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3)
       "@tiptap/react":
         specifier: ^2.10.3
         version: 2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -1529,6 +1532,15 @@ packages:
       }
     peerDependencies:
       "@tiptap/core": ^2.7.0
+
+  "@tiptap/extension-placeholder@2.10.4":
+    resolution:
+      {
+        integrity: sha512-leWG4xP7cvddR6alGZS7yojOh9941bxehgAeQDLlEisaJcNa2Od5Vbap2zipjc5sXMxZakQVChL27oH1wWhHkQ==,
+      }
+    peerDependencies:
+      "@tiptap/core": ^2.7.0
+      "@tiptap/pm": ^2.7.0
 
   "@tiptap/extension-strike@2.10.3":
     resolution:
@@ -6275,6 +6287,11 @@ snapshots:
   "@tiptap/extension-paragraph@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))":
     dependencies:
       "@tiptap/core": 2.10.3(@tiptap/pm@2.10.3)
+
+  "@tiptap/extension-placeholder@2.10.4(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))(@tiptap/pm@2.10.3)":
+    dependencies:
+      "@tiptap/core": 2.10.3(@tiptap/pm@2.10.3)
+      "@tiptap/pm": 2.10.3
 
   "@tiptap/extension-strike@2.10.3(@tiptap/core@2.10.3(@tiptap/pm@2.10.3))":
     dependencies:

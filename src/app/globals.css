@@ -84,3 +84,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: hsl(230, 17%, 51%);
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
