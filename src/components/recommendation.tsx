@@ -22,7 +22,7 @@ function useRecommendationQuery(
       // const response = await fetch("/api/recommend", {
       //   method: "POST",
       //   body: JSON.stringify({
-      //     input: { question: chat.prompt, faculty: "" },
+      //     input: { question: chat.prompt, faculty: chat.faculty },
       //   }),
       // });
 
