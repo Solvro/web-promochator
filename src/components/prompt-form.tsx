@@ -33,7 +33,7 @@ const extensions = [
 
 const formSchema = z.object({
   prompt: z.string().min(1),
-  faculty: z.string(),
+  faculty: z.string().default("any"),
 });
 
 export function PromptForm() {
@@ -46,7 +46,7 @@ export function PromptForm() {
     setValue,
     getValues,
     control,
-    formState: { isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -97,7 +97,7 @@ export function PromptForm() {
             <Select
               onValueChange={field.onChange}
               value={field.value}
-              defaultValue=" "
+              defaultValue="any"
             >
               <SelectTrigger className="max-w-48">
                 <p className="truncate">
@@ -105,7 +105,7 @@ export function PromptForm() {
                 </p>
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value=" ">Dowolny wydział</SelectItem>
+                <SelectItem value="any">Dowolny wydział</SelectItem>
                 {Object.keys(faculties).map((faculty) => (
                   <SelectItem key={faculty} value={faculty}>
                     {faculties[faculty]}
