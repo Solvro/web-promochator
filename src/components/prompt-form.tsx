@@ -33,7 +33,7 @@ const extensions = [
 
 const formSchema = z.object({
   prompt: z.string().min(1),
-  faculty: z.string().default("any"),
+  faculty: z.string(),
 });
 
 export function PromptForm() {
@@ -54,7 +54,11 @@ export function PromptForm() {
   const onSubmit = () => {
     const { prompt, faculty } = getValues();
     const uuid = v4();
-    const chat: Chat = { uuid, prompt, faculty };
+    const chat: Chat = {
+      uuid,
+      prompt,
+      faculty: faculty === "any" ? "" : faculty,
+    };
     addChat(chat);
     router.push(`/chat/${uuid}`);
   };
@@ -93,6 +97,7 @@ export function PromptForm() {
         <Controller
           name="faculty"
           control={control}
+          defaultValue="any"
           render={({ field }) => (
             <Select
               onValueChange={field.onChange}
