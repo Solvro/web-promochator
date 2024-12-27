@@ -46,7 +46,7 @@ export function PromptForm() {
     setValue,
     getValues,
     control,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
