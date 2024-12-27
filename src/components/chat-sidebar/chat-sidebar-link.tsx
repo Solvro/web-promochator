@@ -2,9 +2,11 @@
 
 import { Trash2 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 
 export function ChatSidebarLink({
   uuid,
@@ -15,12 +17,16 @@ export function ChatSidebarLink({
   title: string;
   removeChat: (_uuid: string) => void;
 }>) {
+  const pathname = usePathname();
   return (
     <SidebarMenuItem>
       <SidebarMenuButton asChild>
         <Link
           href={`/chat/${uuid}`}
-          className="flex flex-row items-center justify-between"
+          className={cn(
+            "flex flex-row items-center justify-between",
+            pathname.includes(uuid) ? "bg-chat-user" : "",
+          )}
         >
           <span className="truncate">{title}</span>
           <Button

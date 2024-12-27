@@ -1,8 +1,10 @@
 import { Trash2 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 
 export function SupervisorSidebarLink({
   uuid,
@@ -15,12 +17,16 @@ export function SupervisorSidebarLink({
   prompt: string;
   removeSupervisor: (_uuid: string) => void;
 }>) {
+  const pathname = usePathname();
   return (
     <SidebarMenuItem className="rounded-md border-2 border-sidebar-accent">
       <SidebarMenuButton asChild>
         <Link
           href={`/supervisor/${uuid}`}
-          className="flex h-fit flex-row items-center justify-between"
+          className={cn(
+            "flex h-fit flex-row items-center justify-between",
+            pathname.includes(uuid) ? "bg-chat-user" : "",
+          )}
         >
           <div className="flex flex-col truncate">
             <span className="truncate font-semibold">{name}</span>
