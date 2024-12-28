@@ -17,8 +17,8 @@ export function useSupervisors() {
   const addSupervisor = useCallback(
     (supervisor: SavedSupervisor) => {
       setSupervisors((previousSupervisors) => [
-        ...previousSupervisors,
         supervisor,
+        ...previousSupervisors,
       ]);
     },
     [setSupervisors],
