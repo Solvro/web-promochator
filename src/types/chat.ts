@@ -6,4 +6,5 @@ export interface Chat {
   faculty: string;
   helloMessage?: string;
   supervisors?: Supervisor[];
+  createdAt: Date;
 }

@@ -16,6 +16,7 @@ interface Supervisor extends SupervisorResponse {
 interface SavedSupervisor extends Supervisor {
   prompt: string;
   chatUuid: string;
+  createdAt: Date;
 }
 
 export type { Paper, SupervisorResponse, Supervisor, SavedSupervisor };

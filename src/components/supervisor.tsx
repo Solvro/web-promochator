@@ -48,6 +48,7 @@ export function Supervisor({
                   papers,
                   prompt,
                   chatUuid,
+                  createdAt: new Date(),
                 });
               }
         }
