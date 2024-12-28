@@ -19,14 +19,16 @@ export function SupervisorSidebarLink({
 }>) {
   const pathname = usePathname();
   return (
-    <SidebarMenuItem className="rounded-md border-2 border-sidebar-accent">
+    <SidebarMenuItem
+      className={cn(
+        "rounded-md border-2 border-sidebar-accent",
+        pathname.includes(uuid) ? "bg-chat-user" : "",
+      )}
+    >
       <SidebarMenuButton asChild>
         <Link
           href={`/supervisor/${uuid}`}
-          className={cn(
-            "flex h-fit flex-row items-center justify-between",
-            pathname.includes(uuid) ? "bg-chat-user" : "",
-          )}
+          className="flex h-fit flex-row items-center justify-between"
         >
           <div className="flex flex-col truncate">
             <span className="truncate font-semibold">{name}</span>
