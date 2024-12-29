@@ -58,6 +58,7 @@ export function PromptForm() {
       uuid,
       prompt,
       faculty: faculty === "any" ? "" : faculty,
+      createdAt: new Date(),
     };
     addChat(chat);
     router.push(`/chat/${uuid}`);
