@@ -1,16 +1,13 @@
 "use client";
 
 import { Star } from "lucide-react";
-import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { useSupervisors } from "@/hooks/use-supervisors";
 import { faculties } from "@/lib/faculties";
-import { cn } from "@/lib/utils";
-import type { Supervisor as ISupervisor } from "@/types/supervisor";
+import type { Supervisor as SupervisorType } from "@/types/supervisor";
 
 import {
-  Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
@@ -21,16 +18,15 @@ export function Supervisor({
   chatUuid,
   prompt,
 }: {
-  supervisor: ISupervisor;
+  supervisor: SupervisorType;
   chatUuid: string;
   prompt: string;
 }) {
   const { addSupervisor, getSupervisor, removeSupervisor } = useSupervisors();
-  const [open, setOpen] = useState(false);
   const isSaved = getSupervisor(uuid) !== null;
 
   return (
-    <div className="flex w-full flex-row gap-2">
+    <AccordionItem value={uuid} className="group flex w-full flex-row gap-2">
       <Button
         variant="transparent"
         size="icon"
@@ -59,36 +55,22 @@ export function Supervisor({
           size={24}
         />
       </Button>
-      <Accordion
-        type="single"
-        collapsible
-        className={cn(
-          open ? "bg-message-primary" : "border border-message-primary",
-          "w-full rounded-2xl p-4 transition",
-        )}
-      >
-        <AccordionItem value="id" className="space-y-4">
-          <AccordionTrigger
-            className="py-0"
-            onClick={() => {
-              setOpen(!open);
-            }}
-          >
-            <div className="flex flex-col gap-1">
-              <p className="text-xl font-bold">{name}</p>
-              <p>{faculties[faculty] || "Nieznany wydział"}</p>
+      <div className="w-full rounded-2xl border border-chat-bot p-4 transition group-data-[state=open]:bg-chat-bot">
+        <AccordionTrigger className="py-0">
+          <div className="flex flex-col gap-1">
+            <p className="text-xl font-bold">{name}</p>
+            <p>{faculties[faculty] || "Nieznany wydział"}</p>
+          </div>
+        </AccordionTrigger>
+        <AccordionContent className="space-y-6 pb-2 pt-4">
+          {papers.map(({ title, description }) => (
+            <div key={title} className="flex max-w-lg flex-col gap-1">
+              <p className="text-lg font-medium">{title}</p>
+              <p>{description}</p>
             </div>
-          </AccordionTrigger>
-          <AccordionContent className="space-y-6 p-0">
-            {papers.map(({ title, description }) => (
-              <div key={title} className="flex max-w-lg flex-col gap-1">
-                <p className="text-lg font-medium">{title}</p>
-                <p>{description}</p>
-              </div>
-            ))}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </div>
+          ))}
+        </AccordionContent>
+      </div>
+    </AccordionItem>
   );
 }

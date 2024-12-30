@@ -10,6 +10,7 @@ import type { Supervisor as ISupervisor } from "@/types/supervisor";
 
 import { PromochatorIcon } from "./chat";
 import { Supervisor } from "./supervisor";
+import { Accordion } from "./ui/accordion";
 
 function useRecommendationQuery(
   chat: Chat,
@@ -105,18 +106,20 @@ export function Recommendation({
               imageHeight={40}
               imageClassName="py-2 px-1"
             />
-            <p className="rounded-2xl bg-message-primary px-4 py-3">
+            <p className="rounded-2xl bg-chat-bot px-4 py-3">
               {chat.helloMessage}
             </p>
           </div>
-          {chat.supervisors?.map((supervisor) => (
-            <Supervisor
-              key={supervisor.uuid}
-              supervisor={supervisor}
-              prompt={chat.prompt}
-              chatUuid={chat.uuid}
-            />
-          ))}
+          <Accordion type="single" collapsible className="space-y-4">
+            {chat.supervisors?.map((supervisor) => (
+              <Supervisor
+                key={supervisor.uuid}
+                supervisor={supervisor}
+                prompt={chat.prompt}
+                chatUuid={chat.uuid}
+              />
+            ))}
+          </Accordion>
         </>
       )}
     </div>
