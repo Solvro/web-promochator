@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 
 import { mockFetch } from "@/lib/mock-fetch";
-import type { Recommendation } from "@/types/api-types";
+import type { RecommendationResponse } from "@/types/api-types";
 import type { Chat } from "@/types/chat";
 import type { Supervisor as ISupervisor } from "@/types/supervisor";
 
@@ -27,7 +27,7 @@ function useRecommendationQuery(
       //   }),
       // });
 
-      const data = (await response.json()) as Recommendation;
+      const data = (await response.json()) as RecommendationResponse;
       const supervisorsWithUuid = data.output.recommended_supervisors.map(
         (s) => {
           return { ...s, uuid: v4() } as ISupervisor;

@@ -1,6 +1,6 @@
 import type { SupervisorResponse } from "./supervisor";
 
-export interface Recommendation {
+export interface RecommendationResponse {
   output: {
     hello_message: string;
     recommended_supervisors: SupervisorResponse[];
