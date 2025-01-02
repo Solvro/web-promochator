@@ -30,6 +30,6 @@ export async function mockFetch(
       } as Response;
 
       resolve(response);
-    }, 10_000);
+    }, 3000);
   });
 }

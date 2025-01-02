@@ -7,6 +7,7 @@ interface SupervisorResponse {
   name: string;
   faculty: string;
   papers: Paper[];
+  theses: Paper[];
 }
 
 interface Supervisor extends SupervisorResponse {
