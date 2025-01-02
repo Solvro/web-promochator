@@ -3,7 +3,6 @@ import { CircleX, LoaderPinwheel } from "lucide-react";
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 
-import { mockFetch } from "@/lib/mock-fetch";
 import type { RecommendationResponse } from "@/types/api-types";
 import type { Chat } from "@/types/chat";
 import type { Supervisor as ISupervisor } from "@/types/supervisor";
