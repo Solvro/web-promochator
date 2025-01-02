@@ -19,13 +19,12 @@ function useRecommendationQuery(
   return useQuery({
     queryKey: ["recommendation", chat.uuid],
     queryFn: async () => {
-      const response = await mockFetch("/api/recommend");
-      // const response = await fetch("/api/recommend", {
-      //   method: "POST",
-      //   body: JSON.stringify({
-      //     input: { question: chat.prompt, faculty: chat.faculty },
-      //   }),
-      // });
+      const response = await fetch("/api/recommend", {
+        method: "POST",
+        body: JSON.stringify({
+          input: { question: chat.prompt, faculty: chat.faculty },
+        }),
+      });
 
       const data = (await response.json()) as RecommendationResponse;
       const supervisorsWithUuid = data.output.recommended_supervisors.map(
