@@ -24,6 +24,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 const extensions = [
   StarterKit,
@@ -167,7 +173,19 @@ export function PromptForm() {
         />
         <div className="flex items-center gap-x-2">
           {lockDuration !== 0 && (
-            <span className="text-sm">Odczekaj: {lockDuration}</span>
+            <TooltipProvider delayDuration={0}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <span className="text-sm">Odczekaj: {lockDuration}</span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <span>
+                    Ograniczenie jest wprowadzone dla zachowania stabliności
+                    systemu
+                  </span>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           )}
           <Button
             variant="transparent"
