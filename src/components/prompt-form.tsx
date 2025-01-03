@@ -6,12 +6,13 @@ import { EditorProvider } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
 import { ArrowUp } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { v4 } from "uuid";
 import { z } from "zod";
 
 import { useChats } from "@/hooks/use-chats";
+import { useLastRequestTimestamp } from "@/hooks/use-last-request-timestamp";
 import { faculties } from "@/lib/faculties";
 import type { Chat } from "@/types/chat";
 
@@ -23,6 +24,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 const extensions = [
   StarterKit,
@@ -36,10 +43,52 @@ const formSchema = z.object({
   faculty: z.string(),
 });
 
+const LOCK_DURATION_SECONDS = Number(
+  process.env.NEXT_PUBLIC_LOCK_DURATION_SECONDS ?? 60,
+);
+
 export function PromptForm() {
   const router = useRouter();
   const { addChat } = useChats();
   const formRef = useRef<null | HTMLFormElement>(null);
+
+  const { getLastRequestTimestamp, setLastRequestTimestamp } =
+    useLastRequestTimestamp();
+  const [lockDuration, setLockDuration] = useState(0);
+
+  useEffect(() => {
+    const timestamp = getLastRequestTimestamp();
+
+    if (timestamp === null) {
+      return;
+    }
+
+    const delta = Math.floor((Date.now() - timestamp.getTime()) / 1000);
+
+    if (delta > LOCK_DURATION_SECONDS) {
+      return;
+    }
+
+    setLockDuration(LOCK_DURATION_SECONDS - delta);
+
+    if (lockDuration <= 0) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setLockDuration((previousTimer) => {
+        if (previousTimer <= 0) {
+          clearInterval(interval);
+          return 0;
+        }
+        return previousTimer - 1;
+      });
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [lockDuration, getLastRequestTimestamp]);
 
   const {
     handleSubmit,
@@ -61,6 +110,7 @@ export function PromptForm() {
       createdAt: new Date(),
     };
     addChat(chat);
+    setLastRequestTimestamp(new Date());
     router.push(`/chat/${uuid}`);
   };
 
@@ -121,15 +171,32 @@ export function PromptForm() {
             </Select>
           )}
         />
-        <Button
-          variant="transparent"
-          className="aspect-square size-8 rounded-full bg-chat-background"
-          size="icon"
-          type="submit"
-          disabled={isSubmitting}
-        >
-          <ArrowUp size={20}></ArrowUp>
-        </Button>
+        <div className="flex items-center gap-x-2">
+          {lockDuration !== 0 && (
+            <TooltipProvider delayDuration={0}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <span className="text-sm">Odczekaj: {lockDuration}</span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <span>
+                    Ograniczenie jest wprowadzone dla zachowania stabliności
+                    systemu
+                  </span>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          )}
+          <Button
+            variant="transparent"
+            className="aspect-square size-8 rounded-full bg-chat-background"
+            size="icon"
+            type="submit"
+            disabled={isSubmitting || lockDuration !== 0}
+          >
+            <ArrowUp size={20}></ArrowUp>
+          </Button>
+        </div>
       </div>
     </form>
   );
