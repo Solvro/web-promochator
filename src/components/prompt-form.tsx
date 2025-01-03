@@ -37,7 +37,9 @@ const formSchema = z.object({
   faculty: z.string(),
 });
 
-const LOCK_DURATION_SECONDS = 10;
+const LOCK_DURATION_SECONDS = Number(
+  process.env.NEXT_PUBLIC_LOCK_DURATION_SECONDS ?? 60,
+);
 
 export function PromptForm() {
   const router = useRouter();
@@ -50,18 +52,23 @@ export function PromptForm() {
 
   useEffect(() => {
     const timestamp = getLastRequestTimestamp();
+
     if (timestamp === null) {
       return;
     }
+
     const delta = Math.floor((Date.now() - timestamp.getTime()) / 1000);
+
     if (delta > LOCK_DURATION_SECONDS) {
       return;
     }
 
     setLockDuration(LOCK_DURATION_SECONDS - delta);
+
     if (lockDuration <= 0) {
       return;
     }
+
     const interval = setInterval(() => {
       setLockDuration((previousTimer) => {
         if (previousTimer <= 0) {
