@@ -3,7 +3,6 @@ import { CircleX, LoaderPinwheel } from "lucide-react";
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 
-import { mockFetch } from "@/lib/mock-fetch";
 import type { RecommendationResponse } from "@/types/api-types";
 import type { Chat } from "@/types/chat";
 import type { Supervisor as ISupervisor } from "@/types/supervisor";
@@ -19,21 +18,21 @@ function useRecommendationQuery(
   return useQuery({
     queryKey: ["recommendation", chat.uuid],
     queryFn: async () => {
-      const response = await mockFetch("/api/recommend");
-      // const response = await fetch("/api/recommend", {
-      //   method: "POST",
-      //   body: JSON.stringify({
-      //     input: { question: chat.prompt, faculty: chat.faculty },
-      //   }),
-      // });
+      const response = await fetch("/api/recommend", {
+        method: "POST",
+        body: JSON.stringify({
+          input: { question: chat.prompt, faculty: chat.faculty },
+        }),
+      });
 
       const data = (await response.json()) as RecommendationResponse;
-      const supervisorsWithUuid =
-        data.recommendation.recommended_supervisors.map((s) => {
+      const supervisorsWithUuid = data.output.recommended_supervisors.map(
+        (s) => {
           return { ...s, uuid: v4() } as ISupervisor;
-        });
+        },
+      );
       updateChat(chat.uuid, {
-        helloMessage: data.recommendation.hello_message,
+        helloMessage: data.output.hello_message,
         supervisors: supervisorsWithUuid,
       });
       return data;
@@ -95,7 +94,9 @@ export function Recommendation({
           <span className="w-4/5">
             Wystąpił błąd przy pobieraniu rekomendacji.
             <br />
-            Spróbuj ponownie później.
+            Spróbuj ponownie później. Treść błędu:
+            <br />
+            <span className="text-sm">{error.message}</span>
           </span>
         </div>
       ) : (

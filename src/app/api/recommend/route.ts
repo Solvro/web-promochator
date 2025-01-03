@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 
 import { fetchData } from "@/lib/api";
+import { mockFetch } from "@/lib/mock-fetch";
 import type {
-  RawApiRecommendation,
   RecommendationRequest,
   RecommendationResponse,
 } from "@/types/api-types";
@@ -10,15 +10,15 @@ import type {
 export async function POST(request: Request) {
   const body = (await request.json()) as RecommendationRequest;
 
-  const data = await fetchData<RawApiRecommendation>("/recommend/invoke", {
+  if (process.env.NODE_ENV === "development") {
+    const response = await mockFetch("/api/recommend");
+    return NextResponse.json(await response.json());
+  }
+
+  const data = await fetchData<RecommendationResponse>("/recommend/invoke", {
     body: JSON.stringify(body),
     method: "POST",
   });
 
-  const result: RecommendationResponse = {
-    faculty: data.output.faculty,
-    question: data.output.question,
-    recommendation: data.output.recommendation,
-  };
-  return NextResponse.json(result);
+  return NextResponse.json(data);
 }
