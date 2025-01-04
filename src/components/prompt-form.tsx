@@ -57,7 +57,7 @@ export function PromptForm() {
     const chat: Chat = {
       uuid,
       prompt,
-      faculty: faculty === "any" ? "" : faculty,
+      faculty: faculty === "any" ? undefined : faculty,
       createdAt: new Date(),
     };
     addChat(chat);
