@@ -64,29 +64,29 @@ export function PromptForm() {
     }
 
     const delta = Math.floor((Date.now() - timestamp.getTime()) / 1000);
-
-    if (delta > LOCK_DURATION_SECONDS) {
+    const newLockDuration = LOCK_DURATION_SECONDS - delta;
+    if (newLockDuration <= 0 || delta > LOCK_DURATION_SECONDS) {
+      setLockDuration(0);
       return;
     }
 
-    setLockDuration(LOCK_DURATION_SECONDS - delta);
-
-    if (lockDuration <= 0) {
+    if (lockDuration === 0) {
+      setLockDuration(newLockDuration);
       return;
     }
 
-    const interval = setInterval(() => {
-      setLockDuration((previousTimer) => {
-        if (previousTimer <= 0) {
-          clearInterval(interval);
+    const timeout = setTimeout(() => {
+      setLockDuration((previousLockDuration) => {
+        if (previousLockDuration <= 0) {
+          clearTimeout(timeout);
           return 0;
         }
-        return previousTimer - 1;
+        return previousLockDuration - 1;
       });
     }, 1000);
 
     return () => {
-      clearInterval(interval);
+      clearTimeout(timeout);
     };
   }, [lockDuration, getLastRequestTimestamp]);
 

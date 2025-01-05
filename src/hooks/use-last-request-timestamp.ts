@@ -4,15 +4,15 @@ import { useCallback } from "react";
 import { lastRequestTimestampAtom } from "@/atoms/last-request";
 
 export function useLastRequestTimestamp() {
-  const [lastRequestTimestamp, setLastRequestTimestampStorage] = useAtom(
+  const [lastRequestTimestampStorage, setLastRequestTimestampStorage] = useAtom(
     lastRequestTimestampAtom,
   );
 
   const getLastRequestTimestamp = useCallback(() => {
-    return lastRequestTimestamp === null
+    return lastRequestTimestampStorage === null
       ? null
-      : new Date(lastRequestTimestamp);
-  }, [lastRequestTimestamp]);
+      : new Date(lastRequestTimestampStorage);
+  }, [lastRequestTimestampStorage]);
 
   const setLastRequestTimestamp = useCallback(
     (date: Date) => {
