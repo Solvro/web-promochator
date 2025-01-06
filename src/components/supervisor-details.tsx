@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, FileText, GraduationCap } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -53,9 +53,28 @@ function SupervisorDetails({ uuid }: { uuid: string }) {
         <p>{faculties[supervisor.faculty] || "Nieznany wydział"}</p>
       </div>
       <hr className="bg-t-secondary/60" />
+      <h2
+        className="flex items-center gap-2 text-xl text-color-primary"
+        title={`${supervisor.name} jest jednym z autorów poniższych prac`}
+      >
+        <FileText />
+        Prace naukowe
+      </h2>
       <div className="flex flex-wrap gap-4">
         {supervisor.papers.map((paper) => (
           <PaperEntry key={paper.title} paper={paper} />
+        ))}
+      </div>
+      <h2
+        className="flex items-center gap-2 text-xl text-color-primary"
+        title={`${supervisor.name} był/a promotorem poniższych prac`}
+      >
+        <GraduationCap />
+        Promotor
+      </h2>
+      <div className="flex flex-wrap gap-4">
+        {supervisor.theses.map((thesis) => (
+          <PaperEntry key={thesis.title} paper={thesis} />
         ))}
       </div>
     </>
