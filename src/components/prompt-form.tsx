@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Placeholder } from "@tiptap/extension-placeholder";
 import { EditorProvider } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, ClockAlert } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -175,12 +175,15 @@ export function PromptForm() {
           {lockDuration !== 0 && (
             <TooltipProvider delayDuration={0}>
               <Tooltip>
-                <TooltipTrigger>
-                  <span className="text-sm">Odczekaj: {lockDuration}</span>
+                <TooltipTrigger className="flex w-12 items-center gap-x-1 text-red-500">
+                  <ClockAlert size={16}></ClockAlert>
+                  <span className="text-sm">{lockDuration}</span>
                 </TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent className="text-center">
                   <span>
-                    Ograniczenie jest wprowadzone dla zachowania stabliności
+                    Odczekaj przed wysłaniem kolejnego żądania
+                    <br />
+                    Ograniczenie jest wprowadzone dla zachowania stabilności
                     systemu
                   </span>
                 </TooltipContent>
