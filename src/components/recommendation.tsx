@@ -69,7 +69,7 @@ export function Recommendation({
   }, [isLoading, loadingMessage]);
 
   return (
-    <div className="w-full max-w-7xl space-y-4 p-8">
+    <div className="w-full max-w-4xl space-y-4 p-8">
       {isLoading ? (
         <div className="flex items-center gap-x-4">
           <PromochatorIcon

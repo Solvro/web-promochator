@@ -65,18 +65,22 @@ function SupervisorDetails({ uuid }: { uuid: string }) {
           <PaperEntry key={paper.title} paper={paper} />
         ))}
       </div>
-      <h2
-        className="flex items-center gap-2 text-xl text-color-primary"
-        title={`${supervisor.name} był/a promotorem poniższych prac`}
-      >
-        <GraduationCap />
-        Promotor
-      </h2>
-      <div className="flex flex-wrap gap-4">
-        {supervisor.theses.map((thesis) => (
-          <PaperEntry key={thesis.title} paper={thesis} />
-        ))}
-      </div>
+      {supervisor.theses.length > 0 && (
+        <>
+          <h2
+            className="flex items-center gap-2 text-xl text-color-primary"
+            title={`${supervisor.name} był/a promotorem poniższych prac`}
+          >
+            <GraduationCap />
+            Promotor
+          </h2>
+          <div className="flex flex-wrap gap-4">
+            {supervisor.theses.map((thesis) => (
+              <PaperEntry key={thesis.title} paper={thesis} />
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 }
