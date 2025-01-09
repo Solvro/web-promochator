@@ -85,13 +85,12 @@ export function Footer() {
             </svg>
           </Link>
         </div>
-        <div className="mt-8 flex gap-8">
+        <div className="mt-4 grid grid-cols-2 place-items-center items-center gap-8 md:flex">
           <Image
             src={PromochatorLogo}
             alt="logo Promochatora"
             width={180}
             height={34}
-            className="w-44 md:flex"
           />
           <Link href="https://solvro.pwr.edu.pl/" passHref>
             <Image
@@ -99,7 +98,23 @@ export function Footer() {
               alt="Solvro Logo"
               width={150}
               height={150}
-              className="w-40 md:flex"
+            />
+          </Link>
+          <Link href="https://pwr.edu.pl/">
+            <Image
+              src="/assets/logo/pwr.png"
+              alt="PWr logo"
+              width={45}
+              height={40}
+            />
+          </Link>
+          <Link href="https://manus.pl/">
+            <Image
+              src="/assets/logo/manus.png"
+              alt="Manus logo"
+              width={70}
+              height={50}
+              className="bg-white p-1"
             />
           </Link>
         </div>
