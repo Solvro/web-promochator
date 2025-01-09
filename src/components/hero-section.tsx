@@ -62,7 +62,7 @@ export function HeroSection() {
                   Oto{" "}
                   <span className="font-semibold text-color-primary">
                     {" "}
-                    promotorzy{" "}
+                    promotorzy
                   </span>
                   , którzy mogą Ci pomóc w realizacji tego tematu:
                 </p>
