@@ -85,7 +85,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl" className={poppins.className}>
-      <body>
+      <body className="min-h-screen">
         <Providers>
           {children}
           <Script

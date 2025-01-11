@@ -85,6 +85,10 @@
   }
 }
 
+:root:has(.no-scroll) {
+  overflow: hidden;
+}
+
 .tiptap p.is-editor-empty:first-child::before {
   color: hsl(230, 17%, 51%);
   content: attr(data-placeholder);

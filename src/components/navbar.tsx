@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 import PromochatorLogo from "../../public/assets/logo/promochator-logo.svg";
 
@@ -13,7 +14,12 @@ export function Navbar() {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
   return (
     <>
-      <div className="flex items-center justify-between">
+      <div
+        className={cn(
+          "flex items-center justify-between",
+          showSidebar && "no-scroll",
+        )}
+      >
         <Image
           src={PromochatorLogo}
           alt="logo Promochatora"
