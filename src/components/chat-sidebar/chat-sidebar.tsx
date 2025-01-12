@@ -15,6 +15,7 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { useChats } from "@/hooks/use-chats";
 import { useSupervisors } from "@/hooks/use-supervisors";
@@ -26,6 +27,7 @@ export type Tab = "chats" | "supervisors";
 export function ChatSidebar() {
   const { chats, removeChat } = useChats();
   const { supervisors, removeSupervisor } = useSupervisors();
+  const { setOpenMobile } = useSidebar();
   const [tab, setTab] = useState<Tab>("chats");
   const switchTab = () => {
     switch (tab) {
@@ -81,6 +83,9 @@ export function ChatSidebar() {
             variant="transparent"
             title="Utwórz nową rozmowę"
             className="hover:bg-sidebar-accent"
+            onClick={() => {
+              setOpenMobile(false);
+            }}
             asChild
           >
             <Link href="/chat">

@@ -3,7 +3,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
+import {
+  SidebarMenuButton,
+  SidebarMenuItem,
+  useSidebar,
+} from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 
 export function SupervisorSidebarLink({
@@ -18,6 +22,7 @@ export function SupervisorSidebarLink({
   removeSupervisor: (_uuid: string) => void;
 }>) {
   const pathname = usePathname();
+  const { setOpenMobile } = useSidebar();
   return (
     <SidebarMenuItem
       className={cn(
@@ -25,7 +30,12 @@ export function SupervisorSidebarLink({
         pathname.includes(uuid) ? "bg-chat-user" : "",
       )}
     >
-      <SidebarMenuButton asChild>
+      <SidebarMenuButton
+        onClick={() => {
+          setOpenMobile(false);
+        }}
+        asChild
+      >
         <Link
           href={`/supervisor/${uuid}`}
           className="flex h-fit flex-row items-center justify-between"
