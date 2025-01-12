@@ -5,7 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
+import {
+  SidebarMenuButton,
+  SidebarMenuItem,
+  useSidebar,
+} from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 
 export function ChatSidebarLink({
@@ -18,9 +22,15 @@ export function ChatSidebarLink({
   removeChat: (_uuid: string) => void;
 }>) {
   const pathname = usePathname();
+  const { setOpenMobile } = useSidebar();
   return (
     <SidebarMenuItem>
-      <SidebarMenuButton asChild>
+      <SidebarMenuButton
+        onClick={() => {
+          setOpenMobile(false);
+        }}
+        asChild
+      >
         <Link
           href={`/chat/${uuid}`}
           className={cn(
