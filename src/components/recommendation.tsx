@@ -16,7 +16,7 @@ function useRecommendationQuery(
   updateChat: (uuid: string, _chat: Partial<Chat>) => void,
 ) {
   return useQuery({
-    queryKey: ["recommendation", chat.uuid],
+    queryKey: ["recommendation", chat.uuid, chat.prompt, chat.faculty],
     queryFn: async () => {
       const response = await fetch("/api/recommend", {
         method: "POST",
