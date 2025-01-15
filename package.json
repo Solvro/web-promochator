@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.0.4",
-    "@solvro/config": "^1.12.1",
+    "@solvro/config": "^1.13.1",
     "@tanstack/eslint-plugin-query": "^5.62.1",
     "@types/node": "^22.10.1",
     "@types/react": "^19.0.1",
