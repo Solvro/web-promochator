@@ -1,6 +1,6 @@
 "use client";
 
-import { NotebookPen, Star } from "lucide-react";
+import { Bug, NotebookPen, Star } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -20,6 +20,15 @@ import {
 import { useChats } from "@/hooks/use-chats";
 import { useSupervisors } from "@/hooks/use-supervisors";
 
+import { BugReportForm } from "../bug-report-form";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
 import { SupervisorSidebarLink } from "./supervisor-sidebar-link";
 
 export type Tab = "chats" | "supervisors";
@@ -104,6 +113,26 @@ export function ChatSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button
+            size="icon"
+            title="Zgłoś błąd"
+            className="m-4 self-end bg-chat-user"
+          >
+            <Bug></Bug>
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="m-4 w-4/5 bg-chat-user text-color-white">
+          <DialogHeader>
+            <DialogTitle>Zgłoś błąd</DialogTitle>
+            <DialogDescription className="text-color-white">
+              Postaraj się jak najdokładniej opisać błąd, który napotkałeś
+            </DialogDescription>
+          </DialogHeader>
+          <BugReportForm />
+        </DialogContent>
+      </Dialog>
     </Sidebar>
   );
 }
