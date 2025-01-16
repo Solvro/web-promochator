@@ -74,7 +74,7 @@ export function HeroSection() {
                 <p>Specjalistka w dziedzinie UX Design</p>
               </div>
             </div>
-            <Image src={ChatBot} alt="" className="max-w-xs" />
+            <Image src={ChatBot} alt="" width={300} height={300} />
           </div>
         </div>
       </div>
