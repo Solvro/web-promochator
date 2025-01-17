@@ -35,6 +35,5 @@ export function useLockDuration() {
   }, [lockDuration]);
 
   const isLocked = lockDuration > 0;
-
   return { lockDuration, isLocked };
 }

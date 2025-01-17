@@ -6,7 +6,7 @@ interface MockResponse<T> {
 }
 
 const mockResponses: Record<string, MockResponse<unknown>> = {
-  "/api/recommend": {
+  "/recommend/invoke": {
     data: _mockResponse,
     status: 200,
   },
@@ -30,6 +30,6 @@ export async function mockFetch(
       } as Response;
 
       resolve(response);
-    }, 3000);
+    }, 5000);
   });
 }
