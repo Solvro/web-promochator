@@ -3,7 +3,6 @@ import { Poppins } from "next/font/google";
 import Script from "next/script";
 
 import { Providers } from "@/components/providers";
-import { Toaster } from "@/components/ui/toaster";
 
 import "./globals.css";
 
@@ -89,7 +88,6 @@ export default function RootLayout({
       <body className="min-h-screen">
         <Providers>
           {children}
-          <Toaster />
           <Script
             src="https://analytics.solvro.pl/script.js"
             async={true}
