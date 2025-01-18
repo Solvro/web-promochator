@@ -133,7 +133,7 @@ export function Recommendation({
             />
             <p className="rounded-2xl bg-chat-bot px-4 py-3">
               {isLocked && chat.helloMessage === undefined
-                ? `Automatyczne pobranie za ${lockDuration.toString()}`
+                ? `Pobieranie rekomendacji zostało anulowane. Ponowne pobranie za ${lockDuration.toString()}`
                 : chat.helloMessage}
             </p>
           </div>

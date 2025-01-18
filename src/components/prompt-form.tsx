@@ -131,7 +131,7 @@ export function PromptForm() {
           )}
         />
         <div className="flex items-center gap-x-2">
-          {!!isLocked && (
+          {isLocked ? (
             <TooltipProvider delayDuration={0}>
               <Tooltip>
                 <TooltipTrigger className="flex w-12 items-center gap-x-1 text-red-500">
@@ -148,7 +148,7 @@ export function PromptForm() {
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
-          )}
+          ) : null}
           <Button
             variant="transparent"
             className="aspect-square size-8 rounded-full bg-chat-background"
