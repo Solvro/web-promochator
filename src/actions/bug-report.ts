@@ -38,6 +38,12 @@ export async function sendBugReportForm(
     }
   } catch (error) {
     console.error("Bug report submission failed:", error);
+    return {
+      success: false,
+      error: {
+        message: "Bug report submission failed",
+      },
+    };
   }
   return { success: true };
 }
