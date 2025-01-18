@@ -1,16 +1,17 @@
 import Image from "next/image";
 
+import { ClientOnly } from "./client-only";
 import { PromptForm } from "./prompt-form";
 
 export function Chat() {
   return (
-    <div className="flex w-full flex-col items-center gap-y-8 align-middle text-t-secondary">
+    <ClientOnly className="flex w-full flex-col items-center gap-y-8 align-middle text-t-secondary">
       <PromochatorLogo />
       <div className="flex w-full flex-col items-center gap-y-3">
         <p className="text-lg">Pomóc wybrać Ci promotora?</p>
         <PromptForm />
       </div>
-    </div>
+    </ClientOnly>
   );
 }
 

@@ -3,6 +3,8 @@ import { CircleX, LoaderPinwheel } from "lucide-react";
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 
+import { useLastRequestTimestamp } from "@/hooks/use-last-request-timestamp";
+import { useLockDuration } from "@/hooks/use-lock-duration";
 import type { RecommendationResponse } from "@/types/api-types";
 import type { Chat } from "@/types/chat";
 import type { Supervisor as ISupervisor } from "@/types/supervisor";
@@ -14,17 +16,30 @@ import { Accordion } from "./ui/accordion";
 function useRecommendationQuery(
   chat: Chat,
   updateChat: (uuid: string, _chat: Partial<Chat>) => void,
+  isLocked: boolean,
+  setLastRequestTimestamp: (date: Date) => void,
 ) {
   return useQuery({
-    queryKey: ["recommendation", chat.uuid, chat.prompt, chat.faculty],
+    queryKey: [
+      "recommendation",
+      chat.uuid,
+      chat.prompt,
+      chat.faculty,
+      isLocked,
+    ],
     queryFn: async () => {
+      setLastRequestTimestamp(new Date());
       const response = await fetch("/api/recommend", {
         method: "POST",
         body: JSON.stringify({
           input: { question: chat.prompt, faculty: chat.faculty },
         }),
       });
-
+      if (!response.ok) {
+        throw new Error("Failed to fetch recommendation", {
+          cause: response.status,
+        });
+      }
       const data = (await response.json()) as RecommendationResponse;
       const supervisorsWithUuid = data.output.recommended_supervisors.map(
         (s) => {
@@ -37,7 +52,8 @@ function useRecommendationQuery(
       });
       return data;
     },
-    enabled: chat.helloMessage === undefined,
+    enabled: chat.helloMessage === undefined && !isLocked,
+    refetchOnWindowFocus: false,
     retry: false,
   });
 }
@@ -49,22 +65,30 @@ export function Recommendation({
   chat: Chat;
   updateChat: (uuid: string, _chat: Partial<Chat>) => void;
 }) {
-  const { isLoading, error } = useRecommendationQuery(chat, updateChat);
+  const { lockDuration, isLocked } = useLockDuration();
+  const { setLastRequestTimestamp } = useLastRequestTimestamp();
+
+  const { isLoading, error } = useRecommendationQuery(
+    chat,
+    updateChat,
+    isLocked,
+    setLastRequestTimestamp,
+  );
   const [loadingMessage, setLoadingMessage] =
     useState<string>(getRandomMessage());
 
   useEffect(() => {
-    const intervalDuration =
+    const timeoutDuration =
       (loadingMessage.split(" ").length / (100 / 60)) * 1000; //average reader WPM - 238
-    const interval = setInterval(() => {
+    const timeout = setTimeout(() => {
       setLoadingMessage(getRandomMessage());
-    }, intervalDuration);
+    }, timeoutDuration);
 
     if (!isLoading) {
-      clearInterval(interval);
+      clearTimeout(timeout);
     }
     return () => {
-      clearInterval(interval);
+      clearTimeout(timeout);
     };
   }, [isLoading, loadingMessage]);
 
@@ -108,7 +132,9 @@ export function Recommendation({
               imageClassName="py-2 px-1"
             />
             <p className="rounded-2xl bg-chat-bot px-4 py-3">
-              {chat.helloMessage}
+              {isLocked && chat.helloMessage === undefined
+                ? `Pobieranie rekomendacji zostało anulowane. Ponowne pobranie za ${lockDuration.toString()}`
+                : chat.helloMessage}
             </p>
           </div>
           <Accordion type="single" collapsible className="space-y-4">
