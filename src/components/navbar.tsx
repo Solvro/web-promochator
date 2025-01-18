@@ -14,7 +14,7 @@ export function Navbar() {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
   return (
     <>
-      <div
+      <header
         className={cn(
           "flex items-center justify-between",
           showSidebar && "no-scroll",
@@ -24,7 +24,8 @@ export function Navbar() {
           src={PromochatorLogo}
           alt="logo Promochatora"
           width={180}
-          height={34}
+          height={32}
+          className="h-8"
         />
         <div className="hidden flex-row gap-12 whitespace-nowrap lg:flex">
           <Link href="#how-it-works">Jak to działa?</Link>
@@ -35,8 +36,8 @@ export function Navbar() {
             src="/assets/logo/solvro_dark.png"
             alt="Solvro Logo"
             width={150}
-            height={150}
-            className="hidden w-40 lg:flex"
+            height={32}
+            className="hidden h-8 lg:block"
           />
         </Link>
         {/* Mobile icon */}
@@ -53,7 +54,7 @@ export function Navbar() {
             <Equal size={36} />
           </Button>
         )}
-      </div>
+      </header>
       {showSidebar ? (
         <div className="items-right absolute right-0 top-0 flex h-full w-full max-w-sm flex-col justify-start gap-12 bg-[#040314E5] p-6 lg:hidden">
           <div className="flex h-min w-full flex-row items-center justify-between gap-6">

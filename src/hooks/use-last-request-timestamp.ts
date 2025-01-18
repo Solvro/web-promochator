@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 
 import { lastRequestTimestampAtom } from "@/atoms/last-request";
 
@@ -8,7 +8,7 @@ export function useLastRequestTimestamp() {
     lastRequestTimestampAtom,
   );
 
-  const getLastRequestTimestamp = useCallback(() => {
+  const lastRequestTimestamp = useMemo(() => {
     return lastRequestTimestampStorage === null
       ? null
       : new Date(lastRequestTimestampStorage);
@@ -21,5 +21,8 @@ export function useLastRequestTimestamp() {
     [setLastRequestTimestampStorage],
   );
 
-  return { getLastRequestTimestamp, setLastRequestTimestamp };
+  return {
+    lastRequestTimestamp,
+    setLastRequestTimestamp,
+  };
 }
