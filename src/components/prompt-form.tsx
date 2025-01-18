@@ -9,12 +9,13 @@ import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { v4 } from "uuid";
-import { z } from "zod";
+import type { z } from "zod";
 
 import { useChats } from "@/hooks/use-chats";
 import { useLockDuration } from "@/hooks/use-lock-duration";
 import { faculties } from "@/lib/faculties";
 import type { Chat } from "@/types/chat";
+import { promptFormSchema } from "@/types/schemas";
 
 import { Button } from "./ui/button";
 import {
@@ -38,11 +39,6 @@ const extensions = [
   }),
 ];
 
-const formSchema = z.object({
-  prompt: z.string().min(1),
-  faculty: z.string(),
-});
-
 export function PromptForm() {
   const router = useRouter();
   const { addChat } = useChats();
@@ -56,8 +52,8 @@ export function PromptForm() {
     getValues,
     control,
     formState: { isSubmitting },
-  } = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  } = useForm<z.infer<typeof promptFormSchema>>({
+    resolver: zodResolver(promptFormSchema),
   });
 
   const onSubmit = () => {

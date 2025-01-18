@@ -20,6 +20,7 @@ import {
 import { useChats } from "@/hooks/use-chats";
 import { useSupervisors } from "@/hooks/use-supervisors";
 
+import { BugReportForm } from "../bug-report-form";
 import { SupervisorSidebarLink } from "./supervisor-sidebar-link";
 
 export type Tab = "chats" | "supervisors";
@@ -104,6 +105,7 @@ export function ChatSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <BugReportForm triggerVariant="icon" />
     </Sidebar>
   );
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 import PromochatorLogo from "../../public/assets/logo/promochator-logo.svg";
+import { BugReportForm } from "./bug-report-form";
 
 export function Footer() {
   return (
@@ -33,6 +34,7 @@ export function Footer() {
             <Button className="p-0 text-white" variant="link">
               <Link href="#details">Jak ci pomożemy?</Link>
             </Button>
+            <BugReportForm triggerVariant="text"></BugReportForm>
           </div>
         </div>
         <div className="flex gap-5">
