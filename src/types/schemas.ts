@@ -11,3 +11,8 @@ export const BugReportFormSchema = z.object({
     .max(1000, "Tekst może zawierać co najwyżej 1000 znaków"),
   //TODO add screenshots
 });
+
+export const promptFormSchema = z.object({
+  prompt: z.string().min(1),
+  faculty: z.string(),
+});

@@ -9,12 +9,13 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { v4 } from "uuid";
-import { z } from "zod";
+import type { z } from "zod";
 
 import { useChats } from "@/hooks/use-chats";
 import { useLastRequestTimestamp } from "@/hooks/use-last-request-timestamp";
 import { faculties } from "@/lib/faculties";
 import type { Chat } from "@/types/chat";
+import { promptFormSchema } from "@/types/schemas";
 
 import { Button } from "./ui/button";
 import {
@@ -37,11 +38,6 @@ const extensions = [
     placeholder: "Wpisz temat lub opis swojej pracy...",
   }),
 ];
-
-const formSchema = z.object({
-  prompt: z.string().min(1),
-  faculty: z.string(),
-});
 
 const LOCK_DURATION_SECONDS = Number(
   process.env.NEXT_PUBLIC_LOCK_DURATION_SECONDS ?? 60,
@@ -96,8 +92,8 @@ export function PromptForm() {
     getValues,
     control,
     formState: { isSubmitting },
-  } = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  } = useForm<z.infer<typeof promptFormSchema>>({
+    resolver: zodResolver(promptFormSchema),
   });
 
   const onSubmit = () => {
