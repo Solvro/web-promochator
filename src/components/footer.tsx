@@ -121,7 +121,9 @@ export function Footer() {
           </Link>
         </div>
         <div className="flex justify-center">
-          <p className="text-sm">Copyright ©2024 PromoCHATor</p>
+          <p className="text-sm">
+            Made with ❤️ by Solvro © {new Date().getFullYear()}
+          </p>
         </div>
       </div>
     </div>
