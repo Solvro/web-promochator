@@ -12,6 +12,7 @@ interface SupervisorResponse {
 
 interface Supervisor extends SupervisorResponse {
   uuid: string;
+  isAdequate: boolean | undefined;
 }
 
 interface SavedSupervisor extends Supervisor {

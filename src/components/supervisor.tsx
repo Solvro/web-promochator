@@ -1,8 +1,15 @@
 "use client";
 
-import { FileText, GraduationCap, Star } from "lucide-react";
+import {
+  FileText,
+  GraduationCap,
+  Star,
+  ThumbsDown,
+  ThumbsUp,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { useChats } from "@/hooks/use-chats";
 import { useSupervisors } from "@/hooks/use-supervisors";
 import { faculties } from "@/lib/faculties";
 import type { Supervisor as SupervisorType } from "@/types/supervisor";
@@ -12,9 +19,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 export function Supervisor({
-  supervisor: { uuid, faculty, name, papers, theses },
+  supervisor,
   chatUuid,
   prompt,
 }: {
@@ -22,6 +35,8 @@ export function Supervisor({
   chatUuid: string;
   prompt: string;
 }) {
+  const { uuid, faculty, name, papers, theses, isAdequate } = { ...supervisor };
+  const { updateSupervisor } = useChats();
   const { addSupervisor, getSupervisor, removeSupervisor } = useSupervisors();
   const isSaved = getSupervisor(uuid) !== null;
 
@@ -45,6 +60,7 @@ export function Supervisor({
                   theses,
                   prompt,
                   chatUuid,
+                  isAdequate: true,
                   createdAt: new Date(),
                 });
               }
@@ -88,6 +104,75 @@ export function Supervisor({
               <p>{description}</p>
             </div>
           ))}
+          <div className="flex items-center justify-end pt-4">
+            <TooltipProvider delayDuration={0}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <span className="mr-2 pt-1">
+                    Czy ta rekomendacja była sensowna?
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent className="text-center">
+                  <span>
+                    Odpowiadając na pytanie pomagasz nam dostrajać model,
+                    <br />
+                    co przełoży się na bardziej jakościowe rekomendacje 😉
+                  </span>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+
+            <Button
+              variant="transparent"
+              size="icon"
+              className="hover:bg-chat-user"
+              onClick={() => {
+                const newIsAdequate =
+                  isAdequate === undefined || !isAdequate ? true : undefined;
+
+                updateSupervisor(chatUuid, {
+                  ...supervisor,
+                  isAdequate: newIsAdequate,
+                });
+              }}
+            >
+              <ThumbsUp
+                size={20}
+                className={
+                  isAdequate === undefined
+                    ? "fill-transparent"
+                    : isAdequate
+                      ? "fill-white"
+                      : "fill-transparent"
+                }
+              />
+            </Button>
+            <Button
+              size="icon"
+              variant="transparent"
+              className="hover:bg-chat-user"
+              onClick={() => {
+                const newIsAdequate =
+                  isAdequate === undefined || isAdequate ? false : undefined;
+
+                updateSupervisor(chatUuid, {
+                  ...supervisor,
+                  isAdequate: newIsAdequate,
+                });
+              }}
+            >
+              <ThumbsDown
+                size={20}
+                className={
+                  isAdequate === undefined
+                    ? "fill-transparent"
+                    : isAdequate
+                      ? "fill-transparent"
+                      : "fill-white"
+                }
+              />
+            </Button>
+          </div>
         </AccordionContent>
       </div>
     </AccordionItem>
