@@ -3,96 +3,146 @@
 ![Solvro banner](https://github.com/Solvro/backend-topwr-sks/blob/main/assets/solvro_dark.png#gh-dark-mode-only)
 ![Solvro banner](https://github.com/Solvro/backend-topwr-sks/blob/main/assets/solvro_dark.png#gh-light-mode-only)
 
-### Api response
+## 🚀 About
 
-```jsonc
-{
-  "output": {
-    "faculty": "Wydział informatyki", //faculty - it may improve response from model (need to wait for ml team decision) - we may assume we'll need to add a select for it
-    "question": "Web development", //user's prompt - we store it with saved supervisor to give context to user
-    "retrieved_docs": [], //leftovers from previous implementation - don't care about this
-    "prompt": "", //prompt for model, we don't care about it
-    "recommendation": {
-      // most important stuff
-      "hello_message": "Here are some recommended supervisors for your thesis on web development:", //clear I think
-      "recommended_supervisors": [
-        {
-          "name": "Dr. Anna Kowalska",
-          "faculty": "Faculty of Computer Science",
-          "papers": [
-            {
-              "title": "Modern Web Development Frameworks",
-              "description": "This paper discusses various frameworks used in modern web development, comparing their performance and usability.",
-            },
-            {
-              "title": "Responsive Design Techniques",
-              "description": "An exploration of techniques for creating responsive web applications that work on various devices.",
-            },
-          ],
-        },
-        {
-          "name": "Prof. Jan Nowak",
-          "faculty": "Faculty of Information Technology",
-          "papers": [
-            {
-              "title": "User Experience in Web Applications",
-              "description": "A study on the importance of user experience in web application development and its impact on user retention.",
-            },
-            {
-              "title": "Security Challenges in Web Development",
-              "description": "This paper highlights the common security issues faced in web development and strategies to mitigate risks.",
-            },
-          ],
-        },
-        {
-          "name": "Dr. Piotr Wiśniewski",
-          "faculty": "Faculty of Computer Science",
-          "papers": [
-            {
-              "title": "Web Development Best Practices",
-              "description": "An overview of best practices in web development to improve code quality and maintainability.",
-            },
-            {
-              "title": "Framework Comparison: Angular vs. React",
-              "description": "A comparative analysis of Angular and React frameworks for building modern web applications.",
-            },
-          ],
-        },
-        {
-          "name": "Dr. Maria Nowicka",
-          "faculty": "Faculty of Information Technology",
-          "papers": [
-            {
-              "title": "Progressive Web Apps: The Future of Web Development",
-              "description": "Discusses the concept of progressive web apps and their benefits for developers and users.",
-            },
-            {
-              "title": "API Design for Web Applications",
-              "description": "Best practices in designing APIs for web applications to enhance integration and usability.",
-            },
-          ],
-        },
-        {
-          "name": "Prof. Krzysztof Zieliński",
-          "faculty": "Faculty of Computer Science",
-          "papers": [
-            {
-              "title": "The Role of CSS in Web Development",
-              "description": "An insightful look at how CSS affects the development and design of web applications.",
-            },
-            {
-              "title": "JavaScript Frameworks: An Overview",
-              "description": "An overview of popular JavaScript frameworks and their applications in web development.",
-            },
-          ],
-        },
-      ],
-    },
-  },
-  "metadata": {
-    //don't care about this
-    "run_id": "",
-    "feedback_tokens": [],
-  },
-}
+PromoCHATor is a recommendation system that helps WUST students find their ideal diploma thesis supervisor. The system is based on machine learning techniques and data scraped from the web.
+
+## 🔥 Features
+
+Current web app allows to:
+
+- receive recommended supervisors based on the user's thesis topic/short description
+- save supervisors to favourites
+- give feedback about the recommended supervisor to fine-tune the model
+
+## 👨‍🔧 Team
+
+- [Maciej Król](https://github.com/maciejkrol18) - Tech Lead
+- [Maciej Malinowski](https://github.com/mejsiejdev) - Frontend Developer
+- [Maciej Talarczyk](https://github.com/muclx) - UI/UX Designer, Frontend Developer
+- [Wojciech Kosmalski](https://github.com/chewmanji) - Frontend Developer, Project Manager
+
+## 👀 Technologies
+
+- ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+- ![React.js](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+- ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+- ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+- ![Coolify](https://img.shields.io/badge/Coolify-9D00FF?style=for-the-badge&logo=coolify&logoColor=white)
+
+## 🔗 Links
+
+- [Application](https://promochator.solvro.pl/)
+- [Project portfolio](https://solvro.pwr.edu.pl/portfolio/promochator)
+
+## 🔧 Development
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Solvro/web-promochator.git
 ```
+
+### 2. Install Dependencies
+
+```bash
+cd web-promochator
+pnpm i
+```
+
+### 3. Configure Environment
+
+Copy and paste `.env.example` file in the root directory, rename the copy to `.env` and set the following content:
+
+```env
+PROMOCHATOR_API=<promochator-api-url>
+NEXT_PUBLIC_LOCK_DURATION_SECONDS=<default-to-60>
+BUG_REPORT_FORM_URL=<google-form-url>
+BUG_REPORT_FORM_EMAIL=<form-entry>
+BUG_REPORT_FORM_DESCRIPTION=<form-entry>
+BUG_REPORT_FORM_STEPS=<form-entry>
+```
+
+### 4. Run the Project
+
+```bash
+pnpm dev
+```
+
+### 5. View the Application
+
+Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how you can help:
+
+- 🐛 Report bugs or suggest improvements
+- 🌟 Request new features
+- 🧪 Test and provide feedback
+
+## 🔄 Git Workflow
+
+> Don't worry if you forget any steps – our automatic GitHub Action will run checks and notify you of any issues.
+
+### 📘 Solvro GitHub Handbook
+
+Check out our [detailed GitHub workflow guide](https://docs.solvro.pl/github).
+
+### 🔐 SSH Setup
+
+For Windows users, follow this [SSH setup tutorial](https://www.youtube.com/watch?v=vExsOTgIOGw).
+
+### 🌿 Feature Development Workflow
+
+1. Checkout and update main:
+
+   ```bash
+   git checkout main
+   git pull origin main
+   git fetch
+   ```
+
+2. Create a feature branch:
+
+   ```bash
+   git checkout -b feat/{issue_number}-my-feature-branch
+   ```
+
+3. Make your changes and commit:
+
+   ```bash
+   git add .
+   git commit -m "My changes description"
+   ```
+
+4. Push to remote:
+
+   ```bash
+   git push origin feat/{issue_number}-my-feature-branch
+   ```
+
+5. Create a Pull Request on GitHub
+
+### ⚠️ Important Reminders
+
+- Never push directly to the main branch
+- Always commit before checking out to a different branch
+- After successful merge, clean up:
+
+  ```bash
+  git branch -d feat/{issue_number}-my-feature-branch
+  git push origin --delete feat/{issue_number}-my-feature-branch
+  ```
+
+## 📞 Contact
+
+For questions or suggestions, reach out to us:
+
+- ✉️ Email: <kn.solvro@pwr.edu.pl>
+- 🌐 Website: [solvro.pwr.edu.pl](https://solvro.pwr.edu.pl/)
+- 📘 Facebook: [KN Solvro](https://www.facebook.com/knsolvro)
+
+---
+
+We appreciate your interest in our project! 🥰
