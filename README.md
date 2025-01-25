@@ -3,26 +3,26 @@
 ![Solvro banner](https://github.com/Solvro/backend-topwr-sks/blob/main/assets/solvro_dark.png#gh-dark-mode-only)
 ![Solvro banner](https://github.com/Solvro/backend-topwr-sks/blob/main/assets/solvro_dark.png#gh-light-mode-only)
 
-## About 🚀
+## 🚀 About
 
-The PromoCHATor is a recommendation system which helps WUST students to find their ideal diploma thesis supervisor. System is based on machine learning techniques and data scraped from web.
+PromoCHATor is a recommendation system that helps WUST students find their ideal diploma thesis supervisor. The system is based on machine learning techniques and data scraped from the web.
 
-## Features 🔥
+## 🔥 Features
 
 Current web app allows to:
 
-- receive recommended supervisors based on user's thesis topic/short description
+- receive recommended supervisors based on the user's thesis topic/short description
 - save supervisors to favourites
-- give feedback about recommended supervisor in order to fine tune the model
+- give feedback about the recommended supervisor to fine-tune the model
 
-## Team 👨‍🔧
+## 👨‍🔧 Team
 
-- [Maciej Król](https://github.com/maciejkrol18) - Techleader
+- [Maciej Król](https://github.com/maciejkrol18) - Tech Lead
 - [Maciej Malinowski](https://github.com/mejsiejdev) - Frontend Developer
 - [Maciej Talarczyk](https://github.com/muclx) - UI/UX Designer, Frontend Developer
-- [Wojciech Kosmalski](https://github.com/chewmanji) - Frontend Developer
+- [Wojciech Kosmalski](https://github.com/chewmanji) - Frontend Developer, Project Manager
 
-## Technologies 👀
+## 👀 Technologies
 
 - ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 - ![React.js](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -30,12 +30,12 @@ Current web app allows to:
 - ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 - ![Coolify](https://img.shields.io/badge/Coolify-9D00FF?style=for-the-badge&logo=coolify&logoColor=white)
 
-## Links 🔗
+## 🔗 Links
 
 - [Application](https://promochator.solvro.pl/)
 - [Project portfolio](https://solvro.pwr.edu.pl/portfolio/promochator)
 
-## Development 🔧
+## 🔧 Development
 
 ### 1. Clone the Repository
 
@@ -52,7 +52,7 @@ pnpm i
 
 ### 3. Configure Environment
 
-Copy and paste`.env.example` file in the root directory, rename the copy to `.env` and set the following content:
+Copy and paste `.env.example` file in the root directory, rename the copy to `.env` and set the following content:
 
 ```env
 PROMOCHATOR_API=<promochator-api-url>
@@ -145,4 +145,4 @@ For questions or suggestions, reach out to us:
 
 ---
 
-Thank you for your interest in our project! 🥰
+We appreciate your interest in our project! 🥰
