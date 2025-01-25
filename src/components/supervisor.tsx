@@ -60,7 +60,6 @@ export function Supervisor({
                   theses,
                   prompt,
                   chatUuid,
-                  isAdequate: true,
                   createdAt: new Date(),
                 });
               }
@@ -121,7 +120,6 @@ export function Supervisor({
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
-
             <Button
               variant="transparent"
               size="icon"
@@ -142,7 +140,7 @@ export function Supervisor({
                   isAdequate === undefined
                     ? "fill-transparent"
                     : isAdequate
-                      ? "fill-white"
+                      ? "fill-white/70"
                       : "fill-transparent"
                 }
               />
@@ -168,7 +166,7 @@ export function Supervisor({
                     ? "fill-transparent"
                     : isAdequate
                       ? "fill-transparent"
-                      : "fill-white"
+                      : "fill-white/70"
                 }
               />
             </Button>

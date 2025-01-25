@@ -43,7 +43,7 @@ function useRecommendationQuery(
       const data = (await response.json()) as RecommendationResponse;
       const supervisorsWithUuid = data.output.recommended_supervisors.map(
         (s) => {
-          return { ...s, uuid: v4(), isAdequate: undefined } as ISupervisor;
+          return { ...s, uuid: v4() } as ISupervisor;
         },
       );
       updateChat(chat.uuid, {
