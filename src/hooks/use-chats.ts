@@ -3,6 +3,7 @@ import { useCallback } from "react";
 
 import { chatsAtom } from "@/atoms/chats";
 import type { Chat } from "@/types/chat";
+import type { Supervisor } from "@/types/supervisor";
 
 export function useChats() {
   const [chats, setChats] = useAtom(chatsAtom);
@@ -41,11 +42,30 @@ export function useChats() {
     [setChats],
   );
 
+  const updateSupervisor = useCallback(
+    (chatUuid: string, updatedSupervisor: Supervisor) => {
+      setChats((previousChats) =>
+        previousChats.map((chat) => {
+          if (chat.uuid === chatUuid && chat.supervisors !== undefined) {
+            const updatedSupervisors: Supervisor[] = chat.supervisors.map(
+              (s) =>
+                s.uuid === updatedSupervisor.uuid ? updatedSupervisor : s,
+            );
+            return { ...chat, supervisors: updatedSupervisors };
+          }
+          return chat;
+        }),
+      );
+    },
+    [setChats],
+  );
+
   return {
     chats,
     getChat,
     addChat,
     removeChat,
     updateChat,
+    updateSupervisor,
   };
 }
