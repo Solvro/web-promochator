@@ -1,8 +1,8 @@
 export const API_URL = process.env.PROMOCHATOR_API ?? "";
 
-// if (API_URL === "") {
-//   throw new Error("PROMOCHATOR_API was not set in enviroment variables!");
-// }
+if (API_URL === "") {
+  throw new Error("PROMOCHATOR_API was not set in enviroment variables!");
+}
 
 /**
  * Calling Promochator backend API
