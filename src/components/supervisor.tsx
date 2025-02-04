@@ -1,5 +1,6 @@
 "use client";
 
+import { useMutation } from "@tanstack/react-query";
 import {
   FileText,
   GraduationCap,
@@ -12,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { useChats } from "@/hooks/use-chats";
 import { useSupervisors } from "@/hooks/use-supervisors";
 import { faculties } from "@/lib/faculties";
+import type { Feedback } from "@/types/api-types";
 import type { Supervisor as SupervisorType } from "@/types/supervisor";
 
 import {
@@ -30,15 +32,36 @@ export function Supervisor({
   supervisor,
   chatUuid,
   prompt,
+  promptFaculty,
 }: {
   supervisor: SupervisorType;
   chatUuid: string;
   prompt: string;
+  promptFaculty?: string;
 }) {
   const { uuid, faculty, name, papers, theses, isAdequate } = { ...supervisor };
   const { updateSupervisor } = useChats();
   const { addSupervisor, getSupervisor, removeSupervisor } = useSupervisors();
   const isSaved = getSupervisor(uuid) !== null;
+
+  const mutation = useMutation({
+    mutationFn: async (feedback: Feedback) => {
+      const response = await fetch("/api/feedback", {
+        method: "POST",
+        body: JSON.stringify(feedback),
+      });
+      if (!response.ok) {
+        throw new Error(
+          `Wystąpił błąd podczas wysyłania feedbacku: status = ${response.statusText}`,
+        );
+      }
+
+      updateSupervisor(chatUuid, {
+        ...supervisor,
+        isAdequate: feedback.is_adequate,
+      });
+    },
+  });
 
   return (
     <AccordionItem value={uuid} className="group flex w-full flex-row gap-2">
@@ -123,16 +146,18 @@ export function Supervisor({
             <Button
               variant="transparent"
               size="icon"
-              className="hover:bg-chat-user"
+              className="hover:bg-chat-user disabled:opacity-100"
               onClick={() => {
-                const newIsAdequate =
-                  isAdequate === undefined || !isAdequate ? true : undefined;
+                const newIsAdequate = true;
 
-                updateSupervisor(chatUuid, {
-                  ...supervisor,
-                  isAdequate: newIsAdequate,
+                mutation.mutate({
+                  question: prompt,
+                  supervisor_name: supervisor.name,
+                  faculty: promptFaculty,
+                  is_adequate: newIsAdequate,
                 });
               }}
+              disabled={isAdequate !== undefined}
             >
               <ThumbsUp
                 size={20}
@@ -148,16 +173,18 @@ export function Supervisor({
             <Button
               size="icon"
               variant="transparent"
-              className="hover:bg-chat-user"
+              className="hover:bg-chat-user disabled:opacity-100"
               onClick={() => {
-                const newIsAdequate =
-                  isAdequate === undefined || isAdequate ? false : undefined;
+                const newIsAdequate = false;
 
-                updateSupervisor(chatUuid, {
-                  ...supervisor,
-                  isAdequate: newIsAdequate,
+                mutation.mutate({
+                  question: prompt,
+                  supervisor_name: supervisor.name,
+                  faculty: promptFaculty,
+                  is_adequate: newIsAdequate,
                 });
               }}
+              disabled={isAdequate !== undefined}
             >
               <ThumbsDown
                 size={20}
