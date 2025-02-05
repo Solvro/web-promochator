@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useChats } from "@/hooks/use-chats";
 import { useSupervisors } from "@/hooks/use-supervisors";
+import { useToast } from "@/hooks/use-toast";
 import { faculties } from "@/lib/faculties";
 import type { Feedback } from "@/types/api-types";
 import type { Supervisor as SupervisorType } from "@/types/supervisor";
@@ -44,6 +45,8 @@ export function Supervisor({
   const { addSupervisor, getSupervisor, removeSupervisor } = useSupervisors();
   const isSaved = getSupervisor(uuid) !== null;
 
+  const { toast } = useToast();
+
   const mutation = useMutation({
     mutationFn: async (feedback: Feedback) => {
       const response = await fetch("/api/feedback", {
@@ -51,11 +54,19 @@ export function Supervisor({
         body: JSON.stringify(feedback),
       });
       if (!response.ok) {
+        toast({
+          title: "Wystąpił błąd 😪",
+          description: "Spróbuj ponownie później",
+          variant: "destructive",
+        });
         throw new Error(
           `Wystąpił błąd podczas wysyłania feedbacku: status = ${response.statusText}`,
         );
       }
-
+      toast({
+        title: "Dzięki za feedback!",
+        description: "Dzięki, że pomagasz nam ulepszać naszą aplikację 😄",
+      });
       updateSupervisor(chatUuid, {
         ...supervisor,
         isAdequate: feedback.is_adequate,
@@ -157,7 +168,7 @@ export function Supervisor({
                   is_adequate: newIsAdequate,
                 });
               }}
-              disabled={isAdequate !== undefined}
+              disabled={isAdequate !== undefined || mutation.isPending}
             >
               <ThumbsUp
                 size={20}
@@ -184,7 +195,7 @@ export function Supervisor({
                   is_adequate: newIsAdequate,
                 });
               }}
-              disabled={isAdequate !== undefined}
+              disabled={isAdequate !== undefined || mutation.isPending}
             >
               <ThumbsDown
                 size={20}
