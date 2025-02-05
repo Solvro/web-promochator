@@ -66,6 +66,7 @@ export function Supervisor({
       toast({
         title: "Dzięki za feedback!",
         description: "Dzięki, że pomagasz nam ulepszać naszą aplikację 😄",
+        className: "bg-chat-user text-color-white",
       });
       updateSupervisor(chatUuid, {
         ...supervisor,
