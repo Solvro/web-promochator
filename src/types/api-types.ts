@@ -13,3 +13,10 @@ export interface RecommendationRequest {
     faculty?: string;
   };
 }
+
+export interface Feedback {
+  question: string;
+  supervisor_name: string;
+  faculty?: string;
+  is_adequate: boolean;
+}

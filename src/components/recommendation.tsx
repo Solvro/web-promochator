@@ -142,8 +142,9 @@ export function Recommendation({
               <Supervisor
                 key={supervisor.uuid}
                 supervisor={supervisor}
-                prompt={chat.prompt}
                 chatUuid={chat.uuid}
+                prompt={chat.prompt}
+                promptFaculty={chat.faculty}
               />
             ))}
           </Accordion>
