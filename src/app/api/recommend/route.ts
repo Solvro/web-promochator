@@ -10,11 +10,6 @@ import type {
 export async function POST(request: Request) {
   const body = (await request.json()) as RecommendationRequest;
 
-  if (process.env.NODE_ENV === "development") {
-    const response = await mockFetch("/recommend/invoke");
-    return NextResponse.json(await response.json());
-  }
-
   const data = await fetchData<RecommendationResponse>("/recommend/invoke", {
     body: JSON.stringify(body),
     method: "POST",

@@ -7,10 +7,6 @@ export async function POST(request: Request) {
   try {
     const body = (await request.json()) as Feedback;
 
-    if (process.env.NODE_ENV === "development") {
-      return NextResponse.json(null, { status: 201 });
-    }
-
     await fetchData("/recommend/feedback", {
       body: JSON.stringify(body),
       method: "POST",
