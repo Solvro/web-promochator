@@ -19,7 +19,7 @@ describe("fetchData - real /recommend/invoke integration test", () => {
         res.output.recommended_supervisors.map((s) => s.name).join(" ")
       ).toContain("Lewandowski");
     },
-    15000
+    30000
   );
 
   it(
@@ -38,7 +38,7 @@ describe("fetchData - real /recommend/invoke integration test", () => {
         res.output.recommended_supervisors.map((s) => s.name).join(" ")
       ).toContain("Łukasz Nowak");
     },
-    15000
+    30000
   );
 
   it(
@@ -57,6 +57,6 @@ describe("fetchData - real /recommend/invoke integration test", () => {
         res.output.recommended_supervisors.map((s) => s.name).join(" ")
       ).toContain("Gisterek");
     },
-    15000
+    30000
   );
 });

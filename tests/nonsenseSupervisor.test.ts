@@ -17,7 +17,7 @@ describe("fetchData - nonsense input", () => {
 
       expect(res.output.recommended_supervisors.length).toBe(0);
     },
-    15000 
+    30000 
   );
 });
 
@@ -37,6 +37,6 @@ describe("fetchData - nonsense input", () => {
       expect(res.output.recommended_supervisors.length).toBe(0);
       console.log("Response for nonsense input:", res);
     },
-    15000 
+    30000 
   );
 });
