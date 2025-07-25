@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { fetchData } from "@/lib/api";
-import { mockFetch } from "@/lib/mock-fetch";
+
 import type {
   RecommendationRequest,
   RecommendationResponse,

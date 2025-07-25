@@ -150,9 +150,7 @@ export function PromptForm() {
                   </div>
                 </TooltipTrigger>
                 <TooltipContent className="text-center">
-                  <span>
-                    Odczekaj przed wysłaniem kolejnego żądania
-                  </span>
+                  <span>Odczekaj przed wysłaniem kolejnego żądania</span>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -170,7 +168,10 @@ export function PromptForm() {
         </div>
       </div>
       {errorMessage && (
-        <p data-testid="error-msg" className="mt-2 text-center text-sm text-red-500">
+        <p
+          data-testid="error-msg"
+          className="mt-2 text-center text-sm text-red-500"
+        >
           {errorMessage}
         </p>
       )}

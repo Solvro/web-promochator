@@ -9,7 +9,6 @@ window.Element.prototype.hasPointerCapture = () => false;
 window.Element.prototype.releasePointerCapture = () => {};
 window.Element.prototype.scrollIntoView = () => {};
 
-
 const mockPush = vi.fn();
 const mockAddChat = vi.fn();
 
@@ -33,7 +32,7 @@ vi.mock("@tiptap/react", () => ({
   EditorProvider: ({ onUpdate, editorProps }: any) => (
     <textarea
       data-testid={editorProps?.attributes["data-testid"]}
-      onChange={e =>
+      onChange={(e) =>
         onUpdate && onUpdate({ editor: { getText: () => e.target.value } })
       }
     />
@@ -44,7 +43,10 @@ describe("Chat Component with PromptForm", () => {
   beforeEach(() => {
     vi.clearAllMocks();
 
-    vi.mocked(useLockDuration).mockReturnValue({ isLocked: false, lockDuration: 0 });
+    vi.mocked(useLockDuration).mockReturnValue({
+      isLocked: false,
+      lockDuration: 0,
+    });
   });
 
   it("should correctrly preprocess data and return a supervisor", async () => {
@@ -52,10 +54,17 @@ describe("Chat Component with PromptForm", () => {
     mockAddChat.mockResolvedValue(undefined);
     render(<Chat />);
 
-    await user.type(screen.getByTestId("prompt-editor"), "Analiza jakościowa sygnału w urządzeniach GMS");
+    await user.type(
+      screen.getByTestId("prompt-editor"),
+      "Analiza jakościowa sygnału w urządzeniach GMS",
+    );
 
     await user.click(screen.getByRole("combobox"));
-    await user.click(await screen.findByRole("option", { name: /Wydział Informatyki i Telekomunikacji/i }));
+    await user.click(
+      await screen.findByRole("option", {
+        name: /Wydział Informatyki i Telekomunikacji/i,
+      }),
+    );
 
     await user.click(screen.getByRole("button", { name: /wyślij/i }));
 
@@ -75,7 +84,10 @@ describe("Chat Component with PromptForm", () => {
     mockAddChat.mockRejectedValueOnce(new Error("Błąd serwera"));
     render(<Chat />);
 
-    await user.type(screen.getByTestId("prompt-editor"), "cokolwiek nie wpiszę to i tak będzie błąd");
+    await user.type(
+      screen.getByTestId("prompt-editor"),
+      "cokolwiek nie wpiszę to i tak będzie błąd",
+    );
     await user.click(screen.getByRole("button", { name: /wyślij/i }));
 
     const errorMessage = await screen.findByTestId("error-msg");
@@ -95,10 +107,12 @@ describe("Chat Component with PromptForm", () => {
   });
 
   it("should lock the button and show the timer if the counter is active", async () => {
-
     // i overwrote mock just in case
-    vi.mocked(useLockDuration).mockReturnValue({ isLocked: true, lockDuration: 30 });
-    
+    vi.mocked(useLockDuration).mockReturnValue({
+      isLocked: true,
+      lockDuration: 30,
+    });
+
     render(<Chat />);
 
     const submitButton = screen.getByRole("button", { name: /wyślij/i });

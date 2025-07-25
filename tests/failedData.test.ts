@@ -23,7 +23,11 @@ describe("fetchData - API error handling", () => {
     await expect(() =>
       fetchData("/recommend/invoke", {
         method: "POST",
-        body: JSON.stringify({ input: { question: "jeden kij co tu będzie, i tak ma zwrócić błąd xd" } }),
+        body: JSON.stringify({
+          input: {
+            question: "jeden kij co tu będzie, i tak ma zwrócić błąd xd",
+          },
+        }),
       }),
     ).rejects.toThrow("Internal Server Error");
   });
