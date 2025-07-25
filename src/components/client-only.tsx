@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { HTMLAttributes, ReactNode } from "react";
+import React from "react";
 
 export function ClientOnly({
   children,

@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { ClientOnly } from "./client-only";
 import { PromptForm } from "./prompt-form";
+import React from "react";
 
 export function Chat() {
   return (

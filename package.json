@@ -6,18 +6,11 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
     "lint": "next lint",
-    "prepare": "husky",
-    "start": "next start"
+    "start": "next start",
+    "format:check": "prettier --check .",
+    "format": "prettier --write ."
   },
-  "lint-staged": {
-    "*": [
-      "prettier --write --ignore-unknown"
-    ]
-  },
-  "prettier": "@solvro/config/prettier",
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-accordion": "^1.2.2",
@@ -37,8 +30,8 @@
     "jotai": "^2.10.4",
     "lucide-react": "^0.460.0",
     "next": "^15.2.3",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-hook-form": "^7.54.2",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
@@ -47,17 +40,22 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.2.3",
-    "@solvro/config": "^1.13.1",
+    "@solvro/config": "^2.0.1",
     "@tanstack/eslint-plugin-query": "^5.62.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^22.10.1",
-    "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.1",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.17",
+    "@vitest/browser": "^3.2.4",
     "eslint": "^9.16.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.2.10",
+    "jsdom": "^26.1.0",
+    "msw": "^2.10.4",
     "postcss": "^8.4.49",
-    "prettier": "^3.4.2",
     "tailwindcss": "^3.4.16",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^3.2.4"
   }
 }

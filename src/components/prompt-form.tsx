@@ -6,10 +6,11 @@ import { EditorProvider } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
 import { ArrowUp, ClockAlert } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { v4 } from "uuid";
 import type { z } from "zod";
+import React from "react";
 
 import { useChats } from "@/hooks/use-chats";
 import { useLockDuration } from "@/hooks/use-lock-duration";
@@ -43,6 +44,7 @@ export function PromptForm() {
   const router = useRouter();
   const { addChat } = useChats();
   const formRef = useRef<null | HTMLFormElement>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const { lockDuration, isLocked } = useLockDuration();
 
@@ -56,7 +58,8 @@ export function PromptForm() {
     resolver: zodResolver(promptFormSchema),
   });
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
+    setErrorMessage(null);
     const { prompt, faculty } = getValues();
     const uuid = v4();
     const chat: Chat = {
@@ -65,8 +68,14 @@ export function PromptForm() {
       faculty: faculty === "any" ? undefined : faculty,
       createdAt: new Date(),
     };
-    addChat(chat);
-    router.push(`/chat/${uuid}`);
+
+    try {
+      await addChat(chat);
+      router.push(`/chat/${uuid}`);
+    } catch (error) {
+      console.error("Błąd podczas dodawania czatu:", error);
+      setErrorMessage("Wystąpił nieoczekiwany błąd. Spróbuj ponownie.");
+    }
   };
 
   return (
@@ -82,6 +91,7 @@ export function PromptForm() {
           editorProps={{
             attributes: {
               class: "pb-4 focus:outline-none cursor-text max-h-[200px]",
+              "data-testid": "prompt-editor",
             },
             handleKeyDown: (_, event) => {
               if (event.key === "Enter" && !event.shiftKey) {
@@ -117,11 +127,14 @@ export function PromptForm() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="any">Dowolny wydział</SelectItem>
-                {Object.keys(faculties).map((faculty) => (
-                  <SelectItem key={faculty} value={faculty}>
-                    {faculties[faculty]}
-                  </SelectItem>
-                ))}
+                {Object.entries(faculties).map(([key, value]) => {
+                  if (key === "any") return null;
+                  return (
+                    <SelectItem key={key} value={key}>
+                      {value}
+                    </SelectItem>
+                  );
+                })}
               </SelectContent>
             </Select>
           )}
@@ -130,22 +143,20 @@ export function PromptForm() {
           {isLocked ? (
             <TooltipProvider delayDuration={0}>
               <Tooltip>
-                <TooltipTrigger className="flex w-12 items-center gap-x-1 text-red-500">
-                  <ClockAlert size={16}></ClockAlert>
-                  <span className="text-sm">{lockDuration}</span>
+                <TooltipTrigger asChild>
+                  <div className="flex w-12 cursor-default items-center gap-x-1 text-red-500">
+                    <ClockAlert size={16}></ClockAlert>
+                    <span className="text-sm">{lockDuration}</span>
+                  </div>
                 </TooltipTrigger>
                 <TooltipContent className="text-center">
-                  <span>
-                    Odczekaj przed wysłaniem kolejnego żądania
-                    <br />
-                    Ograniczenie jest wprowadzone dla zachowania stabilności
-                    systemu
-                  </span>
+                  <span>Odczekaj przed wysłaniem kolejnego żądania</span>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
           ) : null}
           <Button
+            aria-label="Wyślij"
             variant="transparent"
             className="aspect-square size-8 rounded-full bg-chat-background"
             size="icon"
@@ -156,6 +167,14 @@ export function PromptForm() {
           </Button>
         </div>
       </div>
+      {errorMessage && (
+        <p
+          data-testid="error-msg"
+          className="mt-2 text-center text-sm text-red-500"
+        >
+          {errorMessage}
+        </p>
+      )}
     </form>
   );
 }

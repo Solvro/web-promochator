@@ -13,6 +13,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "types": ["vitest", "node"],
+    "jsxImportSource": "react",
     "plugins": [
       {
         "name": "next"
